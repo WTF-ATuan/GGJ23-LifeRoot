@@ -28,8 +28,12 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Mutipy: 0.04
+    - _Mutipy: 0.05
     - _Offset: 0
+    - _XMutipy: 0.04
+    - _XOffset: 0
+    - _YMutipy: 0.0465
+    - _YOffset: 0
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

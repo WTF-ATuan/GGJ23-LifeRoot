@@ -54,8 +54,6 @@ public class MapGenCtrl : MonoBehaviour
         }
     }
 
-    public Vector2 ldPos,urPos;
-    
     private void Update()
     {
         CameraUpdate();
