@@ -119,12 +119,7 @@ public class MapGenCtrl : MonoBehaviour
                 obj = ObjFactories[Data[chunk]].ForceGen(chunk);
             }
             
-            if (obj == null)
-            {
-                Debug.Log($"NoObj[{Data[chunk]}]!");
-                return;
-            }
-            
+            if (obj == null) return;
             Objs.Add(chunk, obj);
         }
     }

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8623d5c2eed27541b67494b135663ae, type: 3}
-  m_Name: Rock
+  m_Script: {fileID: 11500000, guid: fd30ceec98bf341b7b24bcc41f9f885d, type: 3}
+  m_Name: Bool Event
   m_EditorClassIdentifier: 
-  Prefeb: {fileID: 4380901693000417028, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
-  GenDistance: 7
-  RandomSkip: 0.5
-  MinCanGenY: -1
+  arg: 0
