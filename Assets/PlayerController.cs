@@ -5,39 +5,72 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    // Object linking
+    public LineRenderer _rootRenderer;
     public GameObject currentTarget;
-    public float addForceDotValueThreshold = 0.7f;
-    public float forceFactor = 1f;
     public Rigidbody2D playerRigidbody;
 
+    // Config
+    public float addForceDotValueThreshold = 0.7f;
+    public float forceFactor = 0.5f;
+    public float speedLimit = 10f;
+
+    // Reader
+    public float speed;
+
+    // Internal
     Vector3 lastPosition;
+    Vector3 direction;
+
     // Start is called before the first frame update
     void Start()
     {
         lastPosition = transform.position;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (currentTarget != null)
         {   
             Vector3 direction = currentTarget.transform.position - transform.position;
             transform.up = direction;
+            UpdateVectors();
             ApplyForce();
-            lastPosition = transform.position;
         }
+    }
+    
+    void UpdateVectors()
+    {
+        direction = transform.position - lastPosition;
+        speed = direction.magnitude / Time.fixedDeltaTime;
+        lastPosition = transform.position;
+    }
+
+    void Update()
+    {
+        DrawRoot();
+    }
+
+    void DrawRoot()
+    {
+        if (currentTarget != null)
+        {
+            _rootRenderer.enabled = true;
+            _rootRenderer.SetPosition(0, transform.position);
+            _rootRenderer.SetPosition(1, currentTarget.transform.position);
+        }
+        else
+        {
+            _rootRenderer.enabled = false;
+        }
+            
     }
     
     void ApplyForce()
     {
-        Vector3 direction = (transform.position - lastPosition).normalized;
-        float dotValue = Vector3.Dot(direction, transform.right);
-        Debug.Log("Dot: " + dotValue);
-        if (Math.Abs(dotValue) > addForceDotValueThreshold)
+        float dotValue = Vector3.Dot(direction.normalized, transform.right);
+        if (Math.Abs(dotValue) > addForceDotValueThreshold && speed < speedLimit)
         {
-            Debug.Log("Apply force");
             Vector3 force = transform.right * forceFactor * dotValue;
             playerRigidbody.AddForceAtPosition(force, transform.position);
         }
