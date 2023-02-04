@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.idlegame.gameevent": {
+      "version": "https://github.com/hhuwvom/GameEvent.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "68f401bbb837c48872b013ab575dfa9fb35ca509"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,
