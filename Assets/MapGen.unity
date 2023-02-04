@@ -405,9 +405,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0607170b816f3494497f811c1fb0a0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GenRoot: {fileID: 1940441908}
   FolowTarget: {fileID: 503883374}
   BG: {fileID: 809750671}
-  GenObjList: []
+  GenObjList:
+  - {fileID: 11400000, guid: 2cb19c562ccdf13469292b56905bd22e, type: 2}
+  ldPos: {x: 0, y: 0}
+  urPos: {x: 0, y: 0}
 --- !u!4 &1940441908
 Transform:
   m_ObjectHideFlags: 0
