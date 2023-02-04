@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8623d5c2eed27541b67494b135663ae, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  Prefeb: {fileID: 3501590752710936814, guid: 981280752ed8f574393ad2f1023d5dcf, type: 3}
-  MinGenY: 0
-  MinGenYSpace: 1
+  Prefeb: {fileID: 4380901693000417028, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
