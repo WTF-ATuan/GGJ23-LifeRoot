@@ -2807,6 +2807,7 @@ MonoBehaviour:
   GenObjList:
   - {fileID: 11400000, guid: 2cb19c562ccdf13469292b56905bd22e, type: 2}
   - {fileID: 11400000, guid: 6148493e61b29a749ada2d27fe2a7d02, type: 2}
+  - {fileID: 11400000, guid: 417a5b3d63bdf9941a1d591e17568e46, type: 2}
 --- !u!4 &1940441908
 Transform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.GameEvent;
+using UniRx;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -34,7 +35,6 @@ public class PlayerController : MonoBehaviour
     Vector3 fixedDirection;
 
     public GameObject _currentTarget { private set; get; }
-
     private GameObject currentTarget
     {
         set
@@ -45,18 +45,22 @@ public class PlayerController : MonoBehaviour
         get => _currentTarget;
     }
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        Instance = this;
+
+    }
+    
     void Start()
     {
         lastPosition = transform.position;
         fixedDirection = transform.right;
         currentTarget = null;
+        
+        EventAggregator.OnEvent<RockBreak>().Subscribe(e => {if (e.O == currentTarget) OnRootDetach(); }).AddTo(this);
     }
 
-    void Awake()
-    {
-        Instance = this;
-    }
+
 
     void FixedUpdate()
     {
@@ -186,4 +190,12 @@ public class HookRock {
         O = o;
     }
 }
+
+public class RockBreak {
+    public GameObject O;
+    public RockBreak(GameObject o) {
+        O = o;
+    }
+}
+
 

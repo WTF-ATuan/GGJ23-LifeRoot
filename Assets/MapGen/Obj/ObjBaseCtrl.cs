@@ -8,11 +8,11 @@ using Random = UnityEngine.Random;
 public class ObjBaseCtrl : MonoBehaviour
 {
 
-    private bool IsHooking;
+    protected bool IsHooking;
     private List<IDisposable> EventHooks;
     public Vector2Int MyChunk { private set; get; }
     
-    private void Awake()
+    protected virtual void Awake()
     {
         EventHooks = new List<IDisposable>();
         MyChunk = Define.Pos2Chunk(transform.position);

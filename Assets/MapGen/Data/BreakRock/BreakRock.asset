@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8623d5c2eed27541b67494b135663ae, type: 3}
-  m_Name: Rocket
+  m_Name: BreakRock
   m_EditorClassIdentifier: 
-  Type: 2
-  Prefeb: {fileID: 8355867500021174142, guid: 7b4df3246d0df754fbfa2c2ac4a6cefd, type: 3}
+  Type: 3
+  Prefeb: {fileID: 6590322282203154894, guid: 76b341ba7e3f04f4d8fb863716127948, type: 3}
   GenDistance: 7
   GenChance: 0.3
   MinCanGenY: 1

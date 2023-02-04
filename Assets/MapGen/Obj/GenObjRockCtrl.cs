@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class GenObjRockCtrl : GenObjBaseCtrl
 {
     public int GenDistance = 7;
-    public float RandomSkip = 0.5f;
+    public float GenChance = 0.5f;
     public float MinCanGenY = 1;
     public float MaxCanGenY = 9999;
     // public float lifetime
@@ -25,7 +25,16 @@ public class GenObjRockCtrl : GenObjBaseCtrl
         foreach (var chunck in chuncks) {
             if (data.ContainsKey(chunck)) return false;
         }
-        if(Random.value<RandomSkip)return false;
+        if(Random.value>GenChance)return false;
         return true;
     }
 }
+
+public enum ObjType
+{
+    Null,
+    Rock,
+    Rocket,
+    BreakRock
+}
+

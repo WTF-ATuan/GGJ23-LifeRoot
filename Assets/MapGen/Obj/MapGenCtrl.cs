@@ -5,11 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ObjType
-{
-    Rock,
-    Rocket
-}
 
 public class MapGenCtrl : MonoBehaviour
 {
@@ -84,7 +79,7 @@ public class MapGenCtrl : MonoBehaviour
         }
     }
 
-    void RecycleChunk(Vector2Int chunk)
+    public void RecycleChunk(Vector2Int chunk)
     {
         bool haveObj = Objs.ContainsKey(chunk);
         if (!haveObj) return;
@@ -125,7 +120,9 @@ public class MapGenCtrl : MonoBehaviour
                     }
                 }
             } else {
-                obj = ObjFactories[Data[chunk]].ForceGen(chunk);
+                if (ObjFactories.ContainsKey(Data[chunk])) {
+                    obj = ObjFactories[Data[chunk]].ForceGen(chunk);
+                }
             }
             
             if (obj == null) return;
@@ -133,9 +130,8 @@ public class MapGenCtrl : MonoBehaviour
         }
     }
 
-    public void ChangeChunkType(ObjBaseCtrl ctrl, ObjType type)
+    public void ChangeChunkType(Vector2Int chunk, ObjType type)
     {
-        var chunk = ctrl.MyChunk;
         if (Data.ContainsKey(chunk)) {
             Data[chunk] = type;
         } else {
