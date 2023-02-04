@@ -918,7 +918,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
+  m_Mass: 0.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1116,6 +1116,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cb01c3555fde94a198feecf8114e69b8, type: 3}
   - {fileID: 21300000, guid: cb89f3bd2c18f4b3a99698b98361e0a7, type: 3}
   - {fileID: 21300000, guid: 06bd8392a06164f35833c84b5aebbf28, type: 3}
+  head: {fileID: 0}
+  LeftShoulder: []
+  rightShoulder: {fileID: 0}
+  leftLeg: []
+  rightLeg: []
 --- !u!1 &5007383693242068779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1219,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
+  m_Mass: 0.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
