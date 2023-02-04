@@ -7,13 +7,15 @@ using Random = UnityEngine.Random;
 
 public class ObjBaseCtrl : MonoBehaviour
 {
-    public bool IsHooking;
-    public List<IDisposable> EventHooks;
 
+    private bool IsHooking;
+    private List<IDisposable> EventHooks;
+    public Vector2Int MyChunk { private set; get; }
+    
     private void Awake()
     {
         EventHooks = new List<IDisposable>();
-
+        MyChunk = Define.Pos2Chunk(transform.position);
     }
 
     private void OnEnable()

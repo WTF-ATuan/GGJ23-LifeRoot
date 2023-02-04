@@ -5,8 +5,9 @@ using UnityEngine;
 
 public abstract class GenObjBaseCtrl : ScriptableObject
 {
+    public ObjType Type;
     public GameObject Prefeb;
-    public abstract bool CanGen(Dictionary<Vector2Int, Type> data, Vector2Int chunk);
+    public abstract bool CanGen(Dictionary<Vector2Int, ObjType> data, Vector2Int chunk);
 }
 
 public class ObjFactory
@@ -29,7 +30,7 @@ public class ObjFactory
         return o;
     }
     
-    public bool CheckCanGen(Dictionary<Vector2Int, Type> data, Vector2Int chunk, out PoolObj<ObjBaseCtrl> obj)
+    public bool CheckCanGen(Dictionary<Vector2Int, ObjType> data, Vector2Int chunk, out PoolObj<ObjBaseCtrl> obj)
     {
         obj = null;
         if (!Data.CanGen(data, chunk)) return false;

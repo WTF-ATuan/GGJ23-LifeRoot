@@ -5,15 +5,22 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ObjType
+{
+    Rock,
+    Rocket
+}
+
 public class MapGenCtrl : MonoBehaviour
 {
+    public static MapGenCtrl Instance;
+    
     public Transform GenRoot;
     public List<GenObjBaseCtrl> GenObjList;
-
-
-    private Dictionary<Vector2Int, Type> Data;
+    
+    private Dictionary<Vector2Int, ObjType> Data;
     private Dictionary<Vector2Int, PoolObj<ObjBaseCtrl>> Objs;
-    private Dictionary<Type, ObjFactory> ObjFactories;
+    private Dictionary<ObjType, ObjFactory> ObjFactories;
     
     private Vector2Int LastChunk;
     private List<Vector2Int> LastInCameraChunks;
@@ -31,17 +38,19 @@ public class MapGenCtrl : MonoBehaviour
     
     private void Awake()
     {
+        Instance = this;
+        
         GenObjInit();
         ChunkInit();
         
         void GenObjInit()
         {
-            Data = new Dictionary<Vector2Int, Type>();
+            Data = new Dictionary<Vector2Int, ObjType>();
             Objs = new Dictionary<Vector2Int, PoolObj<ObjBaseCtrl>>();
-            ObjFactories = new Dictionary<Type, ObjFactory>();
-            
-            foreach (var objBaseCtrl in GenObjList) {
-                ObjFactories.Add(objBaseCtrl.GetType(), new ObjFactory(objBaseCtrl, GenRoot));
+            ObjFactories = new Dictionary<ObjType, ObjFactory>();
+
+            foreach (var objBaseCtrl in GenObjList){
+                ObjFactories.Add(objBaseCtrl.Type , new ObjFactory(objBaseCtrl, GenRoot));
             }
         }
         
@@ -123,31 +132,14 @@ public class MapGenCtrl : MonoBehaviour
             Objs.Add(chunk, obj);
         }
     }
-    
-    /*
-    void YUpdate()
+
+    public void ChangeChunkType(ObjBaseCtrl ctrl, ObjType type)
     {
-        CameraUpdate();
-        BGUpdate();
-        ObjUpdate();
-
-        void CameraUpdate()
-        {
-            Vector3 cameraPos = Camera.main.transform.position;
-            cameraPos.y = LastY;
-            Camera.main.transform.position = cameraPos;
+        var chunk = ctrl.MyChunk;
+        if (Data.ContainsKey(chunk)) {
+            Data[chunk] = type;
+        } else {
+            Data.Add(chunk, type);
         }
-
-        void BGUpdate() {
-            BG.material.SetFloat("_Offset",LastY);
-        }
-
-        void ObjUpdate() {
-            foreach (var genObjEntitiy in GenObjEntities) {
-                genObjEntitiy.OnUpdate(ref GenObjDatas, LastY);
-            }
-        }
-        
     }
-    */
 }

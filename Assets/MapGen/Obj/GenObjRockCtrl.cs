@@ -15,7 +15,7 @@ public class GenObjRockCtrl : GenObjBaseCtrl
     // public float lifetime
     
     
-    public override bool CanGen(Dictionary<Vector2Int, Type> data, Vector2Int chunk)
+    public override bool CanGen(Dictionary<Vector2Int, ObjType> data, Vector2Int chunk)
     {
         var pos = Define.Chunk2Pos(chunk);
         if (pos.y < MinCanGenY) return false;
