@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    
+
     // Object linking
+    public GameObject currentTarget;
     public LineRenderer rootRenderer;
     public GameObject possibleTarget;
     public Rigidbody2D playerRigidbody;
@@ -30,18 +31,21 @@ public class PlayerController : MonoBehaviour
     // Internal
     Vector3 lastPosition;
     Vector3 direction;
-    public GameObject currentTarget { private set; get; }
+    Vector3 fixedDirection;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        lastPosition = transform.position;
+        fixedDirection = transform.right;
+        currentTarget = null;
+    }
 
     void Awake()
     {
         Instance = this;
     }
-    
-    void Start()
-    {
-        lastPosition = transform.position;
-    }
-
 
     void FixedUpdate()
     {
@@ -63,11 +67,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            transform.right = fixedDirection;
             possibleTarget = attachDetectorController.currentTarget;
         }
 
     }
-    
+
     void UpdateVectors()
     {
         direction = transform.position - lastPosition;
@@ -105,29 +110,32 @@ public class PlayerController : MonoBehaviour
         {
             rootRenderer.enabled = false;
         }
-            
+
     }
-    
+
     void ApplySwingForce()
     {
         float dotValue = Vector3.Dot(direction.normalized, transform.right);
         if (Math.Abs(dotValue) > addForceDotValueThreshold && speed < speedLimit)
         {
             Vector3 force = transform.right * forceFactor * dotValue;
-            playerRigidbody.AddForceAtPosition(force, transform.position);
+            playerRigidbody.AddForce(force);
         }
     }
 
     void UpdateControl()
     {
-        if (Input.GetKeyDown("space")){
-            if(currentTarget == null)
+        if (Input.GetKeyDown("space"))
+        {
+            if (currentTarget == null)
             {
                 TryAttach();
             }
         }
-        else if (Input.GetKeyUp("space")){
-            if (currentTarget != null) {
+        else if (Input.GetKeyUp("space"))
+        {
+            if (currentTarget != null)
+            {
                 OnRootDetach();
             }
         }
@@ -136,7 +144,7 @@ public class PlayerController : MonoBehaviour
     void TryAttach()
     {
         currentTarget = possibleTarget;
-        if(currentTarget != null)
+        if (currentTarget != null)
         {
             OnRootAttach();
         }
@@ -156,6 +164,7 @@ public class PlayerController : MonoBehaviour
         rootJoint.connectedBody = null;
         currentTarget = null;
         Vector3 force = direction * leaveForceFactor;
-        playerRigidbody.AddForceAtPosition(force, transform.position, ForceMode2D.Force);
+        playerRigidbody.AddForce(force, ForceMode2D.Force);
+        fixedDirection = transform.right;
     }
 }
