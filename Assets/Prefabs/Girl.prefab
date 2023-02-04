@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 5007383692368826924}
   - component: {fileID: 1698762699}
   - component: {fileID: 1698762700}
+  - component: {fileID: 752572507}
   m_Layer: 0
   m_Name: R Hand
   m_TagString: Untagged
@@ -387,6 +388,26 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 90
+--- !u!231 &752572507
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007383692368826926}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 2.2795448, y: 0.89863443}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.05
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &5007383692642287665
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +963,8 @@ GameObject:
   - component: {fileID: 6601081750484041997}
   - component: {fileID: 465444720}
   - component: {fileID: 6601081750484041998}
-  - component: {fileID: 6601081750484041999}
+  - component: {fileID: 943961602}
+  - component: {fileID: 943961601}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Untagged
@@ -1056,8 +1078,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!233 &6601081750484041999
-HingeJoint2D:
+--- !u!255 &943961602
+FixedJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1069,17 +1091,26 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -25.27}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 1
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: -270
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!114 &943961601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007383693156113447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd96db8a9950e45539fcaac58bb98be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testRigidbody: {fileID: 0}
+  leftHandCatcher: {fileID: 1402698911}
+  rightHandCatcher: {fileID: 752572507}
 --- !u!1 &5007383693242068779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,8 +1638,8 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: -90
---- !u!232 &1402698911
-DistanceJoint2D:
+--- !u!231 &1402698911
+SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1621,8 +1652,9 @@ DistanceJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
+  m_Anchor: {x: -2.1412401, y: -1.1221485}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.005
-  m_MaxDistanceOnly: 0
+  m_Distance: 0.05
+  m_DampingRatio: 0
+  m_Frequency: 1
