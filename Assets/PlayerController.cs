@@ -6,14 +6,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Object linking
-    public LineRenderer _rootRenderer;
-    public GameObject currentTarget;
+    public LineRenderer rootRenderer;
+    public GameObject possibleTarget;
     public Rigidbody2D playerRigidbody;
+    public SpringJoint2D rootJoint;
+    public AttachDetectorController attachDetectorController;
+    public float rootLength;
 
     // Config
     public float addForceDotValueThreshold = 0.7f;
     public float forceFactor = 0.5f;
     public float speedLimit = 10f;
+    public float leaveForceFactor = 10f;
+    public float rootNatureLegnthForce = 10f;
+    public float rootNatureLength = 7f;
+    public float maxRootLength = 10f;
 
     // Reader
     public float speed;
@@ -21,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Internal
     Vector3 lastPosition;
     Vector3 direction;
+    GameObject currentTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -28,15 +36,30 @@ public class PlayerController : MonoBehaviour
         lastPosition = transform.position;
     }
 
+
     void FixedUpdate()
     {
+        UpdateVectors();
         if (currentTarget != null)
-        {   
-            Vector3 direction = currentTarget.transform.position - transform.position;
-            transform.up = direction;
-            UpdateVectors();
-            ApplyForce();
+        {
+            UpdateRoot();
+            ApplySwingForce();
+            if (rootJoint.distance > maxRootLength)
+            {
+                rootJoint.autoConfigureDistance = false;
+                rootJoint.distance = maxRootLength;
+
+            }
+            else
+            {
+                rootJoint.autoConfigureDistance = true;
+            }
         }
+        else
+        {
+            possibleTarget = attachDetectorController.currentTarget;
+        }
+
     }
     
     void UpdateVectors()
@@ -46,27 +69,40 @@ public class PlayerController : MonoBehaviour
         lastPosition = transform.position;
     }
 
+    void UpdateRoot()
+    {
+        Vector3 direction = currentTarget.transform.position - transform.position;
+        transform.up = direction.normalized;
+        rootLength = direction.magnitude;
+        if (rootLength > rootNatureLength)
+        {
+            Vector3 force = transform.up * (rootLength - rootNatureLength) / rootNatureLength * rootNatureLegnthForce;
+            playerRigidbody.AddForceAtPosition(force, transform.position, ForceMode2D.Force);
+        }
+    }
+
     void Update()
     {
         DrawRoot();
+        UpdateControl();
     }
 
     void DrawRoot()
     {
         if (currentTarget != null)
         {
-            _rootRenderer.enabled = true;
-            _rootRenderer.SetPosition(0, transform.position);
-            _rootRenderer.SetPosition(1, currentTarget.transform.position);
+            rootRenderer.enabled = true;
+            rootRenderer.SetPosition(0, transform.position);
+            rootRenderer.SetPosition(1, currentTarget.transform.position);
         }
         else
         {
-            _rootRenderer.enabled = false;
+            rootRenderer.enabled = false;
         }
             
     }
     
-    void ApplyForce()
+    void ApplySwingForce()
     {
         float dotValue = Vector3.Dot(direction.normalized, transform.right);
         if (Math.Abs(dotValue) > addForceDotValueThreshold && speed < speedLimit)
@@ -76,8 +112,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateControl()
+    {
+        if (Input.GetKeyDown("space")){
+            if(currentTarget == null)
+            {
+                TryAttach();
+            }
+        }
+        else if (Input.GetKeyUp("space")){
+            if (currentTarget != null) {
+                OnRootDetach();
+            }
+        }
+    }
+
+    void TryAttach()
+    {
+        currentTarget = possibleTarget;
+        if(currentTarget != null)
+        {
+            OnRootAttach();
+        }
+    }
+
     void OnRootAttach()
     {
         lastPosition = transform.position;
+        rootJoint.enabled = true;
+        rootJoint.connectedBody = currentTarget.GetComponent<Rigidbody2D>();
+        UpdateRoot();
+    }
+
+    void OnRootDetach()
+    {
+        rootJoint.enabled = false;
+        rootJoint.connectedBody = null;
+        currentTarget = null;
+        Vector3 force = direction * leaveForceFactor;
+        playerRigidbody.AddForceAtPosition(force, transform.position, ForceMode2D.Force);
     }
 }
