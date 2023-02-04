@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   Prefeb: {fileID: 4380901693000417028, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
-  GenDistance: 7
-  RandomSkip: 0.5
+  GenDistance: 0
+  RandomSkip: 0.7
   MinCanGenY: -1

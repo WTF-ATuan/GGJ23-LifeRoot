@@ -20,8 +20,8 @@ public class CameraCtrl : MonoBehaviour
     {
         var player = PlayerController.Instance;
         if (player == null) return Vector3.zero;
-        var nowHaveRock = player.currentTarget != null;
-        return nowHaveRock ? player.currentTarget.transform.position : player.transform.position;
+        var nowHaveRock = player._currentTarget != null;
+        return nowHaveRock ? player._currentTarget.transform.position : player.transform.position;
     }
 
     private void Update()

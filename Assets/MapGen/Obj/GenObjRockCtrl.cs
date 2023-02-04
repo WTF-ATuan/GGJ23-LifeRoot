@@ -11,11 +11,15 @@ public class GenObjRockCtrl : GenObjBaseCtrl
     public int GenDistance = 7;
     public float RandomSkip = 0.5f;
     public float MinCanGenY = 1;
+    public float MaxCanGenY = 9999;
+    // public float lifetime
+    
     
     public override bool CanGen(Dictionary<Vector2Int, Type> data, Vector2Int chunk)
     {
         var pos = Define.Chunk2Pos(chunk);
         if (pos.y < MinCanGenY) return false;
+        if (pos.y>MaxCanGenY) return false;
         var space = new Vector3(GenDistance , GenDistance , 0);
         var chuncks = Define.InAreaChunk(pos - space, pos + space);
         foreach (var chunck in chuncks) {

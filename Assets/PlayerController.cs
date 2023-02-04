@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.GameEvent;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
 
     // Object linking
-    public GameObject currentTarget;
     public LineRenderer rootRenderer;
     public GameObject possibleTarget;
     public Rigidbody2D playerRigidbody;
@@ -33,6 +33,17 @@ public class PlayerController : MonoBehaviour
     Vector3 direction;
     Vector3 fixedDirection;
 
+    public GameObject _currentTarget { private set; get; }
+
+    private GameObject currentTarget
+    {
+        set
+        {
+            _currentTarget = value;
+            EventAggregator.Publish(new HookRock(_currentTarget));
+        }
+        get => _currentTarget;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -168,3 +179,11 @@ public class PlayerController : MonoBehaviour
         fixedDirection = transform.right;
     }
 }
+
+public class HookRock {
+    public GameObject O;
+    public HookRock(GameObject o) {
+        O = o;
+    }
+}
+
