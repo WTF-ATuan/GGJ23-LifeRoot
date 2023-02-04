@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+    
     // Object linking
     public LineRenderer rootRenderer;
     public GameObject possibleTarget;
@@ -28,9 +30,13 @@ public class PlayerController : MonoBehaviour
     // Internal
     Vector3 lastPosition;
     Vector3 direction;
-    GameObject currentTarget;
+    public GameObject currentTarget { private set; get; }
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         lastPosition = transform.position;

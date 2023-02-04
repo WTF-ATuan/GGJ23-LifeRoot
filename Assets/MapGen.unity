@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &5632978 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1199212656803299807, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
-  m_PrefabInstance: {fileID: 1199212656800313869}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5632979 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1199212656803299806, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
-  m_PrefabInstance: {fileID: 1199212656800313869}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &33135323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1556,6 @@ GameObject:
   m_Component:
   - component: {fileID: 809750670}
   - component: {fileID: 809750671}
-  - component: {fileID: 809750672}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -1641,19 +1630,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &809750672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809750669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6d33f596af99a429c96fcb04673ce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 5632979}
 --- !u!1 &997919579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,6 +2086,7 @@ GameObject:
   - component: {fileID: 1900990299}
   - component: {fileID: 1900990298}
   - component: {fileID: 1900990297}
+  - component: {fileID: 1900990300}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2184,6 +2161,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1900990300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900990296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db460de4d3ccd7c48bddc0b82f9f57b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoopBG: {fileID: 809750671}
+  SmoothDamp: 0.4
 --- !u!1 &1923025121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,8 +2317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenRoot: {fileID: 1940441908}
-  FolowTarget: {fileID: 5632978}
-  BG: {fileID: 809750671}
   GenObjList:
   - {fileID: 11400000, guid: 2cb19c562ccdf13469292b56905bd22e, type: 2}
 --- !u!4 &1940441908
@@ -2555,6 +2544,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1199212657018702774, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199212657018702774, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199212657018702774, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1199212657687377218, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
       propertyPath: m_RootOrder
       value: 2

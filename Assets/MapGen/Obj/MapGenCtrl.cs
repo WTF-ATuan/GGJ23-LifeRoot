@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class MapGenCtrl : MonoBehaviour
 {
     public Transform GenRoot;
-    public GameObject FolowTarget;
-    public SpriteRenderer BG;
     public List<GenObjBaseCtrl> GenObjList;
 
 
@@ -56,15 +54,7 @@ public class MapGenCtrl : MonoBehaviour
 
     private void Update()
     {
-        CameraUpdate();
         ChunkUpdate();
-        
-        void CameraUpdate()
-        {
-            var targetPos = FolowTarget.transform.position;
-            targetPos.z = Camera.main.transform.position.z;
-            Camera.main.transform.position = targetPos;
-        }
         
         void ChunkUpdate()
         {
