@@ -420,7 +420,6 @@ GameObject:
   - component: {fileID: 5007383692642287671}
   - component: {fileID: 1422996318}
   - component: {fileID: 1422996319}
-  - component: {fileID: 162649932}
   m_Layer: 0
   m_Name: R Shoulder
   m_TagString: Untagged
@@ -541,22 +540,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 180
---- !u!58 &162649932
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5007383692642287665}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.58182955, y: -0.18800819}
-  serializedVersion: 2
-  m_Radius: 0.8247992
 --- !u!1 &5007383693084622010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,11 +1099,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cb01c3555fde94a198feecf8114e69b8, type: 3}
   - {fileID: 21300000, guid: cb89f3bd2c18f4b3a99698b98361e0a7, type: 3}
   - {fileID: 21300000, guid: 06bd8392a06164f35833c84b5aebbf28, type: 3}
-  head: {fileID: 0}
-  LeftShoulder: []
-  rightShoulder: {fileID: 0}
-  leftLeg: []
-  rightLeg: []
+  head: {fileID: 1741585218}
+  leftShoulder: {fileID: 1328099842}
+  rightShoulder: {fileID: 1422996319}
+  leftLeg: {fileID: 933589349}
+  rightLeg: {fileID: 1470939566}
 --- !u!1 &5007383693242068779
 GameObject:
   m_ObjectHideFlags: 0

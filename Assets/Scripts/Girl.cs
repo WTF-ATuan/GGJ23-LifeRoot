@@ -9,6 +9,15 @@ public class Girl : MonoBehaviour {
         CryAndLaugh, // 哭笑不得
     }
 
+    public enum BodyPart {
+        Head,   // 頭
+        LeftShoulder,   // 左肩
+        RightSoulder,   // 右肩
+        LeftLeg,    // 左腿
+        RightLeg,   // 右腿
+        All,    // 全身
+    }
+
     #endregion
 
     #region Variables
@@ -25,6 +34,17 @@ public class Girl : MonoBehaviour {
     private SpriteRenderer faceRenderer;
     [SerializeField]
     private Sprite[] faceSprites;
+
+    [SerializeField]
+    private FixedJoint2D head;
+    [SerializeField]
+    private HingeJoint2D leftShoulder;
+    [SerializeField]
+    private HingeJoint2D rightShoulder;
+    [SerializeField]
+    private HingeJoint2D leftLeg;
+    [SerializeField]
+    private HingeJoint2D rightLeg;
 
     #endregion
 
@@ -65,13 +85,36 @@ public class Girl : MonoBehaviour {
         bodyCatcher.connectedBody = rigidbody;
     }
 
+    public void BreakBody(BodyPart part) {
+        switch (part) {
+        case BodyPart.Head:
+            head.enabled = false;
+            break;
+        case BodyPart.LeftShoulder:
+            leftShoulder.enabled = false;
+            break;
+        case BodyPart.RightSoulder:
+            rightShoulder.enabled = false;
+            break;
+        case BodyPart.LeftLeg:
+            leftLeg.enabled = false;
+            break;
+        case BodyPart.RightLeg:
+            rightLeg.enabled = false;
+            break;
+        case BodyPart.All:
+            head.enabled = false;
+            leftShoulder.enabled = false;
+            rightShoulder.enabled = false;
+            leftLeg.enabled = false;
+            rightLeg.enabled = false;
+            break;
+        }
+    }
+
     #endregion
 
     #region Behaviour
-
-    private void Start() {
-        FaceEmote = Emote.CryAndLaugh;
-    }
 
     #endregion
 }
