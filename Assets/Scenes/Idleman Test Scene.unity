@@ -255,6 +255,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5007383693156113444, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
   m_PrefabInstance: {fileID: 6601081750860095075}
   m_PrefabAsset: {fileID: 0}
+--- !u!255 &943961602 stripped
+FixedJoint2D:
+  m_CorrespondingSourceObject: {fileID: 943961602, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+  m_PrefabInstance: {fileID: 6601081750860095075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1431595284
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +366,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!212 &1644053694 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5007383691923054194, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+  m_PrefabInstance: {fileID: 6601081750860095075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1968336619
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +462,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 510768788}
     m_Modifications:
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: bodyCatcher
+      value: 
+      objectReference: {fileID: 943961602}
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: faceRenderer
+      value: 
+      objectReference: {fileID: 1644053694}
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: faceSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: faceSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: cb01c3555fde94a198feecf8114e69b8, type: 3}
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: faceSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cb89f3bd2c18f4b3a99698b98361e0a7, type: 3}
+    - target: {fileID: 943961601, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: faceSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 06bd8392a06164f35833c84b5aebbf28, type: 3}
     - target: {fileID: 943961602, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 

@@ -1,9 +1,17 @@
 using UnityEngine;
 
 public class Girl : MonoBehaviour {
-    #region Variables
+    #region Enum
 
-    public Rigidbody2D testRigidbody;
+    public enum Emote {
+        Normal, // 一般
+        Cry, // 哭泣
+        CryAndLaugh, // 哭笑不得
+    }
+
+    #endregion
+
+    #region Variables
 
     [SerializeField]
     private SpringJoint2D leftHandCatcher;
@@ -13,10 +21,32 @@ public class Girl : MonoBehaviour {
     [SerializeField]
     private FixedJoint2D bodyCatcher;
 
+    [SerializeField]
+    private SpriteRenderer faceRenderer;
+    [SerializeField]
+    private Sprite[] faceSprites;
+
+    #endregion
+
+    #region Property
+
+    /// <summary>
+    /// 設定表情
+    /// </summary>
+    public Emote FaceEmote {
+        set {
+            faceRenderer.sprite = faceSprites[(int)value];
+        }
+    }
+
     #endregion
 
     #region Public Function
 
+    /// <summary>
+    /// 雙手抓住物體(動作呈現)
+    /// </summary>
+    /// <param name="rigidbody">目標物體(例如繩子)</param>
     public void Catch(Rigidbody2D rigidbody) {
         leftHandCatcher.connectedBody = rigidbody;
         rightHandCatcher.connectedBody = rigidbody;
@@ -27,6 +57,10 @@ public class Girl : MonoBehaviour {
         rightHandCatcher.enabled = flag;
     }
 
+    /// <summary>
+    /// 將身體固定
+    /// </summary>
+    /// <param name="rigidbody">目標物(角色實體)</param>
     public void NailBodyTo(Rigidbody2D rigidbody) {
         bodyCatcher.connectedBody = rigidbody;
     }
@@ -36,7 +70,7 @@ public class Girl : MonoBehaviour {
     #region Behaviour
 
     private void Start() {
-        Catch(testRigidbody);
+        FaceEmote = Emote.CryAndLaugh;
     }
 
     #endregion
