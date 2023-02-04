@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809750670}
   - component: {fileID: 809750671}
+  - component: {fileID: 809750672}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -280,7 +281,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f72a8fcbae6413b4d9b577164d4a26a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3d4638aa4e32b4f894dddac185b590, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -291,6 +292,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &809750672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809750669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6d33f596af99a429c96fcb04673ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 503883375}
 --- !u!1 &1900990296
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,8 +424,6 @@ MonoBehaviour:
   BG: {fileID: 809750671}
   GenObjList:
   - {fileID: 11400000, guid: 2cb19c562ccdf13469292b56905bd22e, type: 2}
-  ldPos: {x: 0, y: 0}
-  urPos: {x: 0, y: 0}
 --- !u!4 &1940441908
 Transform:
   m_ObjectHideFlags: 0
