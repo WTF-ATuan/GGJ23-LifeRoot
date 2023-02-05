@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using Game.GameEvent;
 
 public class Tutorial : MonoBehaviour {
+
+    public AudioSource introBgmSource;
+    public AudioSource titleBgmSource;
     #region Variables
 
     [SerializeField]
@@ -28,9 +31,22 @@ public class Tutorial : MonoBehaviour {
 
     private void Update() {
         if (Input.GetMouseButtonDown(1))
+        {
             --spriteIndex;
+            if(spriteIndex == 0)
+            {
+                PlayTitle();
+            }
+        }
         else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        {
             ++spriteIndex;
+            if(spriteIndex == 1)
+            {
+                PlayIntro();
+            }
+        }
+            
 
         if (spriteIndex >= sprites.Length)
         {
@@ -42,6 +58,18 @@ public class Tutorial : MonoBehaviour {
             spriteIndex = 0;
 
         image.sprite = sprites[spriteIndex];
+    }
+
+    void PlayTitle() 
+    {
+        titleBgmSource.Play();
+        introBgmSource.Stop();
+    } 
+
+    void PlayIntro()
+    {
+        titleBgmSource.Stop();
+        introBgmSource.Play();
     }
 
     public void Skip()

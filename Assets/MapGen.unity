@@ -4219,6 +4219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37f0c7528cd54750a496fd71a148f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introBgmSource: {fileID: 1143858652}
+  titleBgmSource: {fileID: 793286620}
   sprites:
   - {fileID: 21300000, guid: 50606ef85419c564d82706aac18c9aa6, type: 3}
   - {fileID: 21300000, guid: c0ed6cc694f0e4132a53bb0f3a446c85, type: 3}
