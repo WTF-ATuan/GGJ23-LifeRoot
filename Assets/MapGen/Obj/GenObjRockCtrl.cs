@@ -48,5 +48,6 @@ public enum ObjType
     DashBird,
     BirdNest,
     RockHigh,
+    Rainbow,
 }
 

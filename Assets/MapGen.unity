@@ -1531,6 +1531,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6148493e61b29a749ada2d27fe2a7d02, type: 2}
   - {fileID: 11400000, guid: 4ea5dada3f49a40c1b2abfb6a634cc7d, type: 2}
   - {fileID: 11400000, guid: 0a522e092b06b42c986185b5453accac, type: 2}
+  - {fileID: 11400000, guid: a01ca559c5b7ff4438750317fa5c2946, type: 2}
 --- !u!4 &1940441908
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,6 +1696,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 658183620582179428, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: winEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 58dadcb1f25b64a6e8b682c705d37295, type: 2}
     - target: {fileID: 833623664175491886, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1743,6 +1748,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3850812205626126444, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708035741418246017, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: winEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 58dadcb1f25b64a6e8b682c705d37295, type: 2}
+    - target: {fileID: 6708035741418246017, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 2091362754}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e9a08de9a0f54d40a07a63ccd07d555, type: 3}
 --- !u!114 &1638363177789302625
