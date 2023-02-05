@@ -30,6 +30,7 @@ public class RocketCtrl : ObjBaseCtrl
 
     public override void HookOn()
     {
+        base.HookOn();
         if (IsFly) return;
         T = transform.DOMove(transform.position + Vector3.up * FlyDis, FlySec).SetEase(Ease.InCirc).OnComplete(() =>
         {

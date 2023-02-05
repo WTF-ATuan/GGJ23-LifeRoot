@@ -19,11 +19,12 @@ public class ObjBaseCtrl : MonoBehaviour
     protected virtual void Awake()
     {
         EventHooks = new List<IDisposable>();
-        MyChunk = Define.Pos2Chunk(transform.position);
+
     }
 
     protected virtual void OnEnable()
     {
+        MyChunk = Define.Pos2Chunk(transform.position);
         EventHook();
         
         void EventHook()
