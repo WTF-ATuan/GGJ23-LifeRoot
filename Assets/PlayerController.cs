@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Reader
     public float speed;
     public Transform playerTransform;
+    public float velocity;
 
     // Internal
     Vector3 lastPosition;
@@ -86,13 +87,30 @@ public class PlayerController : MonoBehaviour
         {
             UpdateRoot();
             ApplySwingForce();
+            UpdateRootHooking();
+        }
+        else
+        {
+            //playerTransform.right = fixedDirection;
+            possibleTarget = attachDetectorController.currentTarget;
+        }
+        UpdateSpeedLimit();
+
+    }
+
+    void UpdateRootHooking()
+    {
+
+        if (ObjBaseCtrl.HookingObj != null)
+        {
+            Debug.Log(ObjBaseCtrl.HookingObj.GetType());
             if (rootJoint.distance > maxRootLength)
             {
                 rootJoint.autoConfigureDistance = false;
                 rootJoint.distance = maxRootLength;
 
             }
-            else if(rootJoint.distance < 5)
+            else if (rootJoint.distance < 5)
             {
                 rootJoint.autoConfigureDistance = false;
                 rootJoint.distance += 4f * Time.fixedDeltaTime;
@@ -103,19 +121,14 @@ public class PlayerController : MonoBehaviour
                 rootJoint.autoConfigureDistance = true;
             }
         }
-        else
-        {
-            //playerTransform.right = fixedDirection;
-            possibleTarget = attachDetectorController.currentTarget;
-        }
-
     }
+
 
     void UpdateVectors()
     {
         Vector3 diff = playerTransform.position - lastPosition;
         direction = diff.normalized;
-        speed = diff.magnitude / Time.fixedDeltaTime;
+        speed = playerRigidbody.velocity.magnitude;
         lastPosition = playerTransform.position;
     }
 
@@ -238,6 +251,18 @@ public class PlayerController : MonoBehaviour
         Vector3 force = floorJumpDirection * jumpForceFactor;
         playerRigidbody.AddForce(force, ForceMode2D.Impulse);
 
+    }
+
+    void UpdateSpeedLimit()
+    {
+        if (speed > speedLimit + 1)
+        {
+            playerRigidbody.drag = playerRigidbody.angularDrag =  speed - speedLimit;
+        }
+        else
+        {
+            playerRigidbody.drag = playerRigidbody.angularDrag = 1;
+        }
     }
 }
 
