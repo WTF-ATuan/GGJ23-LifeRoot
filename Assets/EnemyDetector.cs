@@ -89,7 +89,10 @@ public class EnemyDetector : MonoBehaviour
             currentScale = value;
         }, 0, maxScale, rootRecoverTime).SetEase(Ease.InCirc));
         playerController.OnRootDetach();
-        audioSource.PlayOneShot(hitClip, 0.4f);
+        if(audioSource != null) {
+            audioSource.PlayOneShot(hitClip, 0.4f);
+        }
+        
         Debug.Log("Hit enemy");
     }
 

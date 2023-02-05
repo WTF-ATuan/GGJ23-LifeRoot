@@ -993,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 6347314115985094548}
     - target: {fileID: 1758854636121186518, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: hitPlatformMinInterval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5007383692642287665, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_IsActive
