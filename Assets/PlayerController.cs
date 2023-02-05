@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForceFactor = 10f;
     public Vector3 floorJumpDirection = new Vector3(0, 1, 0);
     public float jumpFloorCooldown = 1f;
+    public float minDrag = 0.5f;
 
     // Reader
     public float speed;
@@ -255,14 +256,15 @@ public class PlayerController : MonoBehaviour
 
     void UpdateSpeedLimit()
     {
-        if (speed > speedLimit + 1)
+        if (speed > speedLimit + minDrag)
         {
-            playerRigidbody.drag = playerRigidbody.angularDrag =  speed - speedLimit;
+            playerRigidbody.drag=  speed - speedLimit;
         }
         else
         {
-            playerRigidbody.drag = playerRigidbody.angularDrag = 1;
+            playerRigidbody.drag = minDrag;
         }
+        playerRigidbody.angularDrag = playerRigidbody.drag * 2f;
     }
 }
 
