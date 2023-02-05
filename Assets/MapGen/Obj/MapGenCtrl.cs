@@ -138,4 +138,13 @@ public class MapGenCtrl : MonoBehaviour
             Data.Add(chunk, type);
         }
     }
+
+    public ObjType GetChunkType(Vector2Int chunk)
+    {
+        if (Data.ContainsKey(chunk))
+        {
+            return Data[chunk];
+        } 
+        return ObjType.Null;
+    }
 }

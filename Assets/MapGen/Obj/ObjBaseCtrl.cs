@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class ObjBaseCtrl : MonoBehaviour
 {
+    public static ObjBaseCtrl HookingObj { private set; get; }
+
     public UnityEvent OnHookOn;
     
     protected bool IsHooking;
@@ -56,11 +58,17 @@ public class ObjBaseCtrl : MonoBehaviour
 
     public virtual void HookOn()
     {
+        HookingObj = this;
         OnHookOn.Invoke();
     }
     
     public virtual void HookOff()
     {
-        Debug.Log("HookOff!");
+        HookingObj = null;
+    }
+
+    public ObjType GetType()
+    {
+        return MapGenCtrl.Instance.GetChunkType(MyChunk);
     }
 }
