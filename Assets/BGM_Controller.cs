@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,54 +12,50 @@ public class BGM_Controller : MonoBehaviour
     public AudioSource introBgmSource;
     public AudioSource deadBgmSource;
     public AudioSource winBgmSource;
+    public AudioSource TitleBgmSource;
 
     public VoidEvent finishTutorialEvent;
     public VoidEvent winEvent;
 
-    // Start is called before the first frame update
+    private List<AudioSource> AllSound;
     void Start()
     {
         finishTutorialEvent.Register(PlayMainBGM);
         winEvent.Register(PlayWinBGM);
+        AllSound = new List<AudioSource>();
+        AllSound.Add(mainBgmSource);
+        AllSound.Add(introBgmSource);
+        AllSound.Add(deadBgmSource);
+        AllSound.Add(winBgmSource);
+        AllSound.Add(TitleBgmSource);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        finishTutorialEvent.Unregister(PlayMainBGM);
+        winEvent.Unregister(PlayWinBGM);
     }
 
+    void StopAll()
+    {
+        AllSound.ForEach(e=>e.Stop());
+    }
+    
     public void PlayMainBGM()
     {
-        if(mainBgmSource != null)
-        {
-            mainBgmSource.Play();
-        }
-        if(introBgmSource != null) {
-            introBgmSource.Stop();
-        }
+        StopAll();
+        mainBgmSource.Play();
     }
 
     public void PlayDeadBGM()
     {
-        if (mainBgmSource != null)
-        {
-            mainBgmSource.Stop();
-        }
-        if (deadBgmSource != null) {
-            deadBgmSource.Play();
-        }
+        StopAll();
+        deadBgmSource.Play();
     }
 
     public void PlayWinBGM()
     {
-        if (mainBgmSource != null)
-        {
-            mainBgmSource.Stop();
-        }
-
-        if (winBgmSource != null) {
-            winBgmSource.Play();
-        }
+        StopAll();
+        winBgmSource.Play();
     }
 }

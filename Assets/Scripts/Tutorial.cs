@@ -32,9 +32,9 @@ public class Tutorial : MonoBehaviour {
         else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             ++spriteIndex;
 
-        if (spriteIndex >= sprites.Length) {
-            finishToturialEvent.Raise();
-            enabled = false;
+        if (spriteIndex >= sprites.Length)
+        {
+            Skip();
             return;
         }
 
@@ -42,6 +42,13 @@ public class Tutorial : MonoBehaviour {
             spriteIndex = 0;
 
         image.sprite = sprites[spriteIndex];
+    }
+
+    public void Skip()
+    {        
+        enabled = false;
+        image.gameObject.SetActive(false);
+        finishToturialEvent.Raise();
     }
 
     #endregion

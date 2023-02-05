@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8835946142015124772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.063, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,7 +330,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b32c8f76b6fb77d44a8356433eb3c963, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -413,6 +413,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380901693000417033, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380901693000417033, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4380901693000417033, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}

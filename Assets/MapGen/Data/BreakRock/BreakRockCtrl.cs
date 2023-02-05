@@ -26,6 +26,7 @@ public class BreakRockCtrl : ObjBaseCtrl
         color.a = 0;
         Sprite.color = color;
         OnReset.Invoke();
+        base.OnEnable();
     }
 
     private void Update()
