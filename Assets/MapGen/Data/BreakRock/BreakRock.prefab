@@ -616,6 +616,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6801974983828604698, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
   m_PrefabInstance: {fileID: 7474165388486244042}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &6590322282203154881 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4380901693000417035, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
+  m_PrefabInstance: {fileID: 7474165388486244042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6590322282203154882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4380901693000417032, guid: c2068cba5df0f2f48a64a6d5ab89944b, type: 3}
@@ -653,7 +658,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  LifeTime: 10
+  LifeTime: 3
   Sprite: {fileID: 3165790086342084419}
   AlmostBreak:
     m_PersistentCalls:
@@ -677,6 +682,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6590322282203154881}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3165790086342084419}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
