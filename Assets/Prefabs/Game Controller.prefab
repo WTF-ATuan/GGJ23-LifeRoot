@@ -47,3 +47,4 @@ MonoBehaviour:
   scoreEvent: {fileID: 11400000, guid: de6dc04d1c9174817bfc33f93c90c877, type: 2}
   timeEvent: {fileID: 11400000, guid: fc0aa4b0625ce4d96a57fd9a48d088cf, type: 2}
   timeFormatEvent: {fileID: 11400000, guid: 8ea4144a8722c4283a6cd77742626364, type: 2}
+  finishGameEvent: {fileID: 11400000, guid: 58dadcb1f25b64a6e8b682c705d37295, type: 2}
