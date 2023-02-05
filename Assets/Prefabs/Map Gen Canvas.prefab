@@ -526,6 +526,7 @@ RectTransform:
   - {fileID: 3510921516992174544}
   - {fileID: 3510921516627561177}
   - {fileID: 3510921517068366293}
+  - {fileID: 5401623294181102415}
   m_Father: {fileID: 3510921517358647904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1409,6 +1410,7 @@ GameObject:
   - component: {fileID: 3510921517358647910}
   - component: {fileID: 3510921517358647909}
   - component: {fileID: 3510921517358647905}
+  - component: {fileID: 7851354619386493236}
   m_Layer: 5
   m_Name: Map Gen Canvas
   m_TagString: Untagged
@@ -1515,6 +1517,27 @@ MonoBehaviour:
   distanceEvent: {fileID: 11400000, guid: de6dc04d1c9174817bfc33f93c90c877, type: 2}
   timeText: {fileID: 3510921516992174545}
   distanceText: {fileID: 3510921516627561178}
+--- !u!114 &7851354619386493236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510921517358647908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37f0c7528cd54750a496fd71a148f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: c0ed6cc694f0e4132a53bb0f3a446c85, type: 3}
+  - {fileID: 21300000, guid: f36b10a06e58e4f41b760efc278070ef, type: 3}
+  - {fileID: 21300000, guid: ca4f7c774c14b416c9b429bf7ebf7aae, type: 3}
+  - {fileID: 21300000, guid: 9852c846e0769471996b5ba2d104ea92, type: 3}
+  - {fileID: 21300000, guid: 846f9aaf6e8654a7cb21bcb8ba03c705, type: 3}
+  - {fileID: 21300000, guid: b4689dae47f98403f98e76c6c10a39c2, type: 3}
+  image: {fileID: 1678476791979713970}
+  finishToturialEvent: {fileID: 11400000, guid: d5ea8aa3ff5b947e4a138537db6bf90f, type: 2}
 --- !u!1 &3510921517406494139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,3 +2462,79 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!1 &7718253978148152682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5401623294181102415}
+  - component: {fileID: 5929353558298905587}
+  - component: {fileID: 1678476791979713970}
+  m_Layer: 5
+  m_Name: Image - Tutorual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &5401623294181102415
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718253978148152682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3510921516735170118}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5929353558298905587
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718253978148152682}
+  m_CullTransparentMesh: 1
+--- !u!114 &1678476791979713970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718253978148152682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c0ed6cc694f0e4132a53bb0f3a446c85, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
