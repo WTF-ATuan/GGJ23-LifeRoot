@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,11 +15,17 @@ public class BreakRockCtrl : ObjBaseCtrl
     private float LastLifeTime;
     public SpriteRenderer Sprite;
 
+    public UnityEvent OnReset;
     public UnityEvent AlmostBreak;
     public UnityEvent OnBreak;
-
-    private void Start() {
+    
+    protected virtual void OnEnable()
+    {
         RestLifeTime = LifeTime;
+        var color = Sprite.color;
+        color.a = 0;
+        Sprite.color = color;
+        OnReset.Invoke();
     }
 
     private void Update()
