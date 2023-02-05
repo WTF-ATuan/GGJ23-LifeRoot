@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.GameEvent;
 using DG.Tweening;
 
 public class EnemyDetector : MonoBehaviour
@@ -10,6 +11,7 @@ public class EnemyDetector : MonoBehaviour
     public float maxScale = 4f;
     public float hitEnemyMinInterval = 1f;
     public float rootRecoverTime = 2f;
+    public VoidEvent winEvent;
 
     DateTime lastHit = DateTime.Now;
 
@@ -25,6 +27,7 @@ public class EnemyDetector : MonoBehaviour
     public AudioClip hitClip;
 
     private Sequence scaleSequence;
+    bool detectEnabled = true;
 
 
     // Start is called before the first frame update
@@ -42,12 +45,17 @@ public class EnemyDetector : MonoBehaviour
         scaleSequence = DOTween.Sequence();
         scaleSequence.SetAutoKill(false);
 
+        winEvent.Register(OnWin);
+
 
     }
     // Update is called once per frame
     void Update()
     {
-        UpdateEnemy();
+        if (detectEnabled)
+        {
+            UpdateEnemy();
+        }
     }
 
     void FixedUpdate()
@@ -81,7 +89,13 @@ public class EnemyDetector : MonoBehaviour
             currentScale = value;
         }, 0, maxScale, rootRecoverTime).SetEase(Ease.InCirc));
         playerController.OnRootDetach();
-        audioSource.PlayOneShot(hitClip, 1);
+        audioSource.PlayOneShot(hitClip, 0.4f);
         Debug.Log("Hit enemy");
+    }
+
+    void OnWin()
+    {
+        audioSource.Stop();
+        detectEnabled = false;
     }
 }

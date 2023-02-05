@@ -1034,7 +1034,7 @@ PrefabInstance:
     - target: {fileID: 5502651670848253235, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: hitClip
       value: 
-      objectReference: {fileID: 8300000, guid: 813229ae4c8c73246a2fca2a47171f2e, type: 3}
+      objectReference: {fileID: 8300000, guid: 1984b5ff7a5b0fa448c66704c929653e, type: 3}
     - target: {fileID: 5502651670848253235, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: playerController
       value: 
