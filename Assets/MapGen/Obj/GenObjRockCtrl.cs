@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class GenObjRockCtrl : GenObjBaseCtrl
 {
     public int GenDistance = 7;
+    public int GenDis = 8;
     public float GenChance = 0.5f;
     public float MinCanGenY = 1;
     public float MaxCanGenY = 9999;
@@ -23,8 +24,16 @@ public class GenObjRockCtrl : GenObjBaseCtrl
         var space = new Vector3(GenDistance , GenDistance , 0);
         var chuncks = Define.InAreaChunk(pos - space, pos + space);
         foreach (var chunck in chuncks) {
+            if (data.ContainsKey(chunck) && data[chunck]==Type) return false;
+        }
+
+        GenDis = 10;
+        space = new Vector3(GenDis , GenDis , 0);
+        chuncks = Define.InAreaChunk(pos - space, pos + space);
+        foreach (var chunck in chuncks) {
             if (data.ContainsKey(chunck) && data[chunck]!=ObjType.Null) return false;
         }
+        
         if(Random.value>GenChance)return false;
         return true;
     }
