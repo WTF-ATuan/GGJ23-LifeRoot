@@ -2051,8 +2051,8 @@ MonoBehaviour:
   Canvas: 1
   Height: 0
   Weight: 0
-  Duration: 1
-  Delay: 0.2
+  Duration: 0.2
+  Delay: 0
 --- !u!225 &3510921518044134234
 CanvasGroup:
   m_ObjectHideFlags: 0
