@@ -50,6 +50,7 @@ public class BreakRockCtrl : ObjBaseCtrl
             OnBreak.Invoke();
             await Task.Delay(500);
             MapGenCtrl.Instance.RecycleChunk(MyChunk);
+            Recycle();
         }
     }
 }

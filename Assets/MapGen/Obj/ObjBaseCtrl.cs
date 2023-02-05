@@ -80,4 +80,9 @@ public class ObjBaseCtrl : MonoBehaviour
     {
         return MapGenCtrl.Instance.GetChunkType(MyChunk);
     }
+
+    public void Recycle()
+    {
+        MapGenCtrl.Instance.RecycleChunk(MyChunk);
+    }
 }
