@@ -693,6 +693,30 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 6347314115985094548}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.10410543
+      objectReference: {fileID: 0}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833623663691995401, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_SortingOrder
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 833623663691995413, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
