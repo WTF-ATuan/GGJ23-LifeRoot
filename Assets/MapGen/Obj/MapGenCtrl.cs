@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 
 public class MapGenCtrl : MonoBehaviour
@@ -114,9 +115,20 @@ public class MapGenCtrl : MonoBehaviour
             bool haveData = Data.ContainsKey(chunk);
             if (!haveData) {
                 ObjType t = ObjType.Null; 
-                foreach (var factory in ObjFactories) {
-                    if (factory.Value.CheckCanGen(Data, chunk, out obj)) {
-                        t = factory.Key;
+                
+                List<ObjType> keys = new List<ObjType>(ObjFactories.Keys);
+                Random rnd = new Random();
+                int n = keys.Count;
+                while (n > 1) {
+                    n--;
+                    int k = rnd.Next(n + 1);
+                    (keys[k], keys[n]) = (keys[n], keys[k]);
+                }
+                foreach (ObjType key in keys)
+                {
+                    var factory = ObjFactories[key];
+                    if (factory.CheckCanGen(Data, chunk, out obj)) {
+                        t = key;
                         break;
                     }
                 }
