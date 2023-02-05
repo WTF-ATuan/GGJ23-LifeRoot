@@ -325,15 +325,10 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.angularDrag = playerRigidbody.drag * 2f;
     }
 
-    public void SetCanControl(bool value)
-    {
-        canControl = value;
-    }
-
-    void OnStart()
+    public void OnStart()
     {
         Debug.Log("Start!");
-        SetCanControl(true);
+        canControl = true;
         judgeWinLoss = true;
 
 
