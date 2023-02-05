@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8623d5c2eed27541b67494b135663ae, type: 3}
-  m_Name: BreakRock
+  m_Script: {fileID: 11500000, guid: 1a2fd70472c8941e3b8a1e2e55c2c3e1, type: 3}
+  m_Name: ScoreEvent
   m_EditorClassIdentifier: 
-  Type: 3
-  Prefeb: {fileID: 6590322282203154894, guid: 76b341ba7e3f04f4d8fb863716127948, type: 3}
-  GenDistance: 1
-  GenChance: 1
-  MinCanGenY: 1
-  MaxCanGenY: 9999
+  arg: 0

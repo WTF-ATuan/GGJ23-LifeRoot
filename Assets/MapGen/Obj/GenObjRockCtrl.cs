@@ -35,6 +35,8 @@ public enum ObjType
     Null,
     Rock,
     Rocket,
-    BreakRock
+    BreakRock,
+    DashBird,
+    BirdNest,
 }
 

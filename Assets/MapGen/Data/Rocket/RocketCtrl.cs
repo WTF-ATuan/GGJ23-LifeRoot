@@ -35,6 +35,7 @@ public class RocketCtrl : ObjBaseCtrl
         T = transform.DOMove(transform.position + Vector3.up * FlyDis, FlySec).SetEase(Ease.InCirc).OnComplete(() =>
         {
             FlyEnd.Invoke();
+            EventAggregator.Publish(new BreakRoot(gameObject));
         });
         OnHookOn.Invoke();
         IsFly = true;

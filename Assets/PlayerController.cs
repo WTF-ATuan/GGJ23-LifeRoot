@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         lastPosition = playerTransform.position;
         fixedDirection = playerTransform.right;
         currentTarget = null;
-        EventAggregator.OnEvent<RockBreak>().Subscribe(e => { if (e.O == currentTarget) OnRootDetach(); }).AddTo(this);
+        EventAggregator.OnEvent<BreakRoot>().Subscribe(e => { if (e.O == currentTarget) OnRootDetach(); }).AddTo(this);
         floorFilter = new ContactFilter2D();
         floorFilter.useLayerMask = true;
         floorFilter.layerMask = LayerMask.GetMask("Floor");
@@ -275,9 +275,9 @@ public class HookRock {
     }
 }
 
-public class RockBreak {
+public class BreakRoot {
     public GameObject O;
-    public RockBreak(GameObject o) {
+    public BreakRoot(GameObject o) {
         O = o;
     }
 }

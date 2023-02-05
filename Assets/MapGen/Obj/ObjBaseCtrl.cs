@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,8 +25,9 @@ public class ObjBaseCtrl : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        MyChunk = Define.Pos2Chunk(transform.position);
+
         EventHook();
+        SetChunk();
         
         void EventHook()
         {
@@ -49,6 +51,12 @@ public class ObjBaseCtrl : MonoBehaviour
                 }
             }));
         }
+
+        async Task SetChunk()
+        {
+            await Task.Delay(10);
+            MyChunk = Define.Pos2Chunk(transform.position);
+        }
     }
 
     private void OnDisable()
@@ -71,5 +79,10 @@ public class ObjBaseCtrl : MonoBehaviour
     public ObjType GetType()
     {
         return MapGenCtrl.Instance.GetChunkType(MyChunk);
+    }
+
+    public void Recycle()
+    {
+        MapGenCtrl.Instance.RecycleChunk(MyChunk);
     }
 }
