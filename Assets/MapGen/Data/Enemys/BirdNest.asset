@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BirdNest
   m_EditorClassIdentifier: 
   Type: 5
-  Prefeb: {fileID: 0}
-  GenDistance: 7
-  GenChance: 0.5
+  Prefeb: {fileID: 5047356226657134230, guid: 4138c8a6b193443d0abb70c2596809fd, type: 3}
+  GenDistance: 1
+  GenChance: 0.3
   MinCanGenY: 1
   MaxCanGenY: 9999

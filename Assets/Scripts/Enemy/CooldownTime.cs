@@ -11,6 +11,18 @@ public class CooldownTime : MonoBehaviour {
 
     #endregion
 
+    #region Public Function
+
+    public void ResetCooldown() {
+        time = 0;
+    }
+
+    public void Stop() {
+        time = cdTime + 1;
+    }
+
+    #endregion
+
     #region Behaviour
 
     private void Awake() {
@@ -19,7 +31,7 @@ public class CooldownTime : MonoBehaviour {
     }
 
     private void OnEnable() {
-        time = 0;
+        ResetCooldown();
     }
 
     private void Update() {
