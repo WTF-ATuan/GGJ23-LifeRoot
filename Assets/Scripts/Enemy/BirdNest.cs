@@ -29,6 +29,8 @@ public class BirdNest : MonoBehaviour {
     #region Behaviour
 
     private void OnEnable() {
+        bird.SetActive(Random.value > 0.5f);
+
         if( bird.activeSelf )
             cooldownTime.Stop();
         else
