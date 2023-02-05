@@ -1058,7 +1058,6 @@ MonoBehaviour:
   GenRoot: {fileID: 1940441908}
   GenObjList:
   - {fileID: 11400000, guid: 2cb19c562ccdf13469292b56905bd22e, type: 2}
-  - {fileID: 11400000, guid: fb71f4e2060c3fd42b5647ebd25a7b01, type: 2}
   - {fileID: 11400000, guid: 417a5b3d63bdf9941a1d591e17568e46, type: 2}
   - {fileID: 11400000, guid: 6148493e61b29a749ada2d27fe2a7d02, type: 2}
   - {fileID: 11400000, guid: 4ea5dada3f49a40c1b2abfb6a634cc7d, type: 2}
@@ -1216,6 +1215,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1421118469}
     m_Modifications:
+    - target: {fileID: 3510921516627561177, guid: bd606e32499994ec19a37d453e516370, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 53.80005
+      objectReference: {fileID: 0}
     - target: {fileID: 3510921516849502614, guid: bd606e32499994ec19a37d453e516370, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
