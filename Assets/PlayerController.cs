@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float rootLength;
     public Collider2D playerCollider;
     public Girl girlController;
+    public bool canControl = false;
     
 
     // Config
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             UpdateDead();
         }
-        else
+        else if(canControl)
         {
             UpdateControl();
         }
@@ -263,6 +264,7 @@ public class PlayerController : MonoBehaviour
     {
         OnRootDetach();
         dead = true;
+        canControl = false;
         Debug.Log("Die!");
         girlController.BreakBody(Girl.BodyPart.All);
         playerCollider.enabled = false;
@@ -305,6 +307,11 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.drag = minDrag;
         }
         playerRigidbody.angularDrag = playerRigidbody.drag * 2f;
+    }
+
+    public void SetCanControl(bool value)
+    {
+        canControl = value;
     }
 }
 
