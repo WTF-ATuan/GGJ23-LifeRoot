@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 833623663691995415}
   - component: {fileID: 7600557981878315599}
   m_Layer: 7
-  m_Name: AttachDetector
+  m_Name: Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 833623663691995412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5007383693156113444}
-  m_RootOrder: 7
+  m_Father: {fileID: 6867179702214755893}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &833623663691995401
 SpriteRenderer:
@@ -104,6 +104,8 @@ MonoBehaviour:
   hitEnemyMinInterval: 1
   rootRecoverTime: 2
   playerController: {fileID: 0}
+  audioSource: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 813229ae4c8c73246a2fca2a47171f2e, type: 3}
   currentScale: 0
 --- !u!50 &833623663691995415
 Rigidbody2D:
@@ -1097,8 +1099,7 @@ Transform:
   - {fileID: 5007383692642287670}
   - {fileID: 5007383693132813342}
   - {fileID: 5007383693584639486}
-  - {fileID: 833623663691995413}
-  - {fileID: 5036728912137925591}
+  - {fileID: 6867179702214755893}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1816,12 +1817,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6742961813061894066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
-  m_LocalScale: {x: 15.5806, y: 15.5806, z: 15.5806}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.03, y: 0, z: 0}
+  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5007383693156113444}
-  m_RootOrder: 8
+  m_Father: {fileID: 6867179702214755893}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5060701183029228019
 SpriteRenderer:
@@ -1875,3 +1876,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7293431543567477617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6867179702214755893}
+  m_Layer: 0
+  m_Name: AttachDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6867179702214755893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293431543567477617}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 833623663691995413}
+  - {fileID: 5036728912137925591}
+  m_Father: {fileID: 5007383693156113444}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

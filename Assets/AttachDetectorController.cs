@@ -7,10 +7,13 @@ using DG.Tweening;
 public class AttachDetectorController : MonoBehaviour
 {
     public GameObject currentTarget;
-    public float maxScale = 20f;
+    public float maxScale = 4f;
     public float hitEnemyMinInterval = 1f;
     public float rootRecoverTime = 2f;
     public PlayerController playerController;
+
+    public AudioSource audioSource;
+    public AudioClip hitClip;
 
     DateTime lastHit = DateTime.Now;
 
@@ -23,9 +26,12 @@ public class AttachDetectorController : MonoBehaviour
 
     private Sequence scaleSequence;
         
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         currentScale = maxScale;
         detectCollider = GetComponent<Collider2D>();
         attachFilter = new ContactFilter2D();
@@ -55,7 +61,7 @@ public class AttachDetectorController : MonoBehaviour
 
     void UpdateScale()
     {
-        transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+        transform.parent.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
     }
 
     void UpdateCurrentTarget()
@@ -98,5 +104,7 @@ public class AttachDetectorController : MonoBehaviour
             currentScale = value;
         }, 0, maxScale, rootRecoverTime).SetEase(Ease.InCirc));
         playerController.OnRootDetach();
+        audioSource.PlayOneShot(hitClip, 1); ;
+        Debug.Log("Hit enemy");
     }
 }

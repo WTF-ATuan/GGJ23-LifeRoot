@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     public Collider2D playerCollider;
     public Girl girlController;
     public bool canControl = false;
+
     
+
 
     // Config
     public float addForceDotValueThreshold = 0.7f;
@@ -268,7 +270,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Die!");
         girlController.BreakBody(Girl.BodyPart.All);
         playerCollider.enabled = false;
-        Destroy(attachDetectorController.gameObject);
+        Destroy(attachDetectorController.gameObject.transform.parent.gameObject);
        
         dieAt = DateTime.Now;
     }
