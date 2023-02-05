@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public SpringJoint2D rootJoint;
     public AttachDetectorController attachDetectorController;
     public float rootLength;
+    public Collider2D playerCollider;
+    
 
     // Config
     public float addForceDotValueThreshold = 0.7f;
@@ -25,14 +27,23 @@ public class PlayerController : MonoBehaviour
     public float rootNatureLegnthForce = 10f;
     public float rootNatureLength = 7f;
     public float maxRootLength = 10f;
+    public float jumpForceFactor = 10f;
+    public Vector3 floorJumpDirection = new Vector3(0, 1, 0);
+    public float jumpFloorCooldown = 1f;
 
     // Reader
     public float speed;
+    public Transform playerTransform;
 
     // Internal
     Vector3 lastPosition;
     Vector3 direction;
     Vector3 fixedDirection;
+    Collider2D[] floorCollidedResults = new Collider2D[2];
+    ContactFilter2D floorFilter;
+    public bool touchFloor = false;
+    bool prevTouchFloor = false;
+    DateTime lastJump;
 
     public GameObject _currentTarget { private set; get; }
     private GameObject currentTarget
@@ -53,11 +64,15 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        lastPosition = transform.position;
-        fixedDirection = transform.right;
+        playerTransform = playerRigidbody.gameObject.transform;
+        lastPosition = playerTransform.position;
+        fixedDirection = playerTransform.right;
         currentTarget = null;
-        
-        EventAggregator.OnEvent<RockBreak>().Subscribe(e => {if (e.O == currentTarget) OnRootDetach(); }).AddTo(this);
+        EventAggregator.OnEvent<RockBreak>().Subscribe(e => { if (e.O == currentTarget) OnRootDetach(); }).AddTo(this);
+        floorFilter = new ContactFilter2D();
+        floorFilter.useLayerMask = true;
+        floorFilter.layerMask = LayerMask.GetMask("Floor");
+        lastJump = DateTime.Now;
     }
 
 
@@ -65,6 +80,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateVectors();
+        UpdateFloor();
+
         if (currentTarget != null)
         {
             UpdateRoot();
@@ -75,6 +92,12 @@ public class PlayerController : MonoBehaviour
                 rootJoint.distance = maxRootLength;
 
             }
+            else if(rootJoint.distance < 5)
+            {
+                rootJoint.autoConfigureDistance = false;
+                rootJoint.distance += 4f * Time.fixedDeltaTime;
+
+            }
             else
             {
                 rootJoint.autoConfigureDistance = true;
@@ -82,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.right = fixedDirection;
+            //playerTransform.right = fixedDirection;
             possibleTarget = attachDetectorController.currentTarget;
         }
 
@@ -90,20 +113,21 @@ public class PlayerController : MonoBehaviour
 
     void UpdateVectors()
     {
-        direction = transform.position - lastPosition;
-        speed = direction.magnitude / Time.fixedDeltaTime;
-        lastPosition = transform.position;
+        Vector3 diff = playerTransform.position - lastPosition;
+        direction = diff.normalized;
+        speed = diff.magnitude / Time.fixedDeltaTime;
+        lastPosition = playerTransform.position;
     }
 
     void UpdateRoot()
     {
-        Vector3 direction = currentTarget.transform.position - transform.position;
-        transform.up = direction.normalized;
+        Vector3 direction = currentTarget.transform.position - playerTransform.position;
+        playerTransform.up = direction.normalized;
         rootLength = direction.magnitude;
         if (rootLength > rootNatureLength)
         {
-            Vector3 force = transform.up * (rootLength - rootNatureLength) / rootNatureLength * rootNatureLegnthForce;
-            playerRigidbody.AddForceAtPosition(force, transform.position, ForceMode2D.Force);
+            Vector3 force = playerTransform.up * (rootLength - rootNatureLength) / rootNatureLength * rootNatureLegnthForce;
+            playerRigidbody.AddForceAtPosition(force, playerTransform.position, ForceMode2D.Force);
         }
     }
 
@@ -118,7 +142,7 @@ public class PlayerController : MonoBehaviour
         if (currentTarget != null)
         {
             rootRenderer.enabled = true;
-            rootRenderer.SetPosition(0, transform.position);
+            rootRenderer.SetPosition(0, playerRigidbody.gameObject.transform.position);
             rootRenderer.SetPosition(1, currentTarget.transform.position);
         }
         else
@@ -130,10 +154,10 @@ public class PlayerController : MonoBehaviour
 
     void ApplySwingForce()
     {
-        float dotValue = Vector3.Dot(direction.normalized, transform.right);
+        float dotValue = Vector3.Dot(direction.normalized, playerTransform.right);
         if (Math.Abs(dotValue) > addForceDotValueThreshold && speed < speedLimit)
         {
-            Vector3 force = transform.right * forceFactor * dotValue;
+            Vector3 force = playerTransform.right * forceFactor * dotValue;
             playerRigidbody.AddForce(force);
         }
     }
@@ -144,7 +168,10 @@ public class PlayerController : MonoBehaviour
         {
             if (currentTarget == null)
             {
-                TryAttach();
+                if (!TryAttach() && touchFloor)
+                {
+                    JumpFromFloor();
+                }
             }
         }
         else if (Input.GetKeyUp("space"))
@@ -156,18 +183,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void TryAttach()
+    bool TryAttach()
     {
         currentTarget = possibleTarget;
         if (currentTarget != null)
         {
             OnRootAttach();
+            return true;
         }
+        return false;
     }
 
     void OnRootAttach()
     {
-        lastPosition = transform.position;
+        lastPosition = playerTransform.position;
         rootJoint.enabled = true;
         rootJoint.connectedBody = currentTarget.GetComponent<Rigidbody2D>();
         UpdateRoot();
@@ -180,7 +209,35 @@ public class PlayerController : MonoBehaviour
         currentTarget = null;
         Vector3 force = direction * leaveForceFactor;
         playerRigidbody.AddForce(force, ForceMode2D.Force);
-        fixedDirection = transform.right;
+        fixedDirection = playerTransform.right;
+    }
+
+    void UpdateFloor()
+    {
+        touchFloor = playerCollider.OverlapCollider(floorFilter, floorCollidedResults) > 0;
+        if(!prevTouchFloor && touchFloor)
+        {
+            OnTouchFloor();
+        }
+        prevTouchFloor = touchFloor;
+    }
+
+    void OnTouchFloor()
+    {
+        Debug.Log("Hit floor!");
+    }
+
+    void JumpFromFloor()
+    {
+        float timeDiff = (float)(DateTime.Now - lastJump).TotalSeconds;
+        if(timeDiff < jumpFloorCooldown)
+        {
+            return;
+        }
+        lastJump = DateTime.Now;
+        Vector3 force = floorJumpDirection * jumpForceFactor;
+        playerRigidbody.AddForce(force, ForceMode2D.Impulse);
+
     }
 }
 
