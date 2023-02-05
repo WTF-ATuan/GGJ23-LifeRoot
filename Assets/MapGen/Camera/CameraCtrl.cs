@@ -6,14 +6,17 @@ using UnityEngine;
 public class CameraCtrl : MonoBehaviour
 {
     public SpriteRenderer LoopBG;
+    public SpriteRenderer Ground;
     [Range(0,1)]
     public float SmoothDamp = 0.1f;
     
-    private Material M;
+    private Material SkyM;
+    private Material GroundM;
     private Vector3 Vec;
     
     private void Awake() {
-        M = LoopBG.material;
+        SkyM = LoopBG.material;
+        GroundM = Ground.material;
     }
 
     public Vector3 NowFocusPos()
@@ -30,11 +33,12 @@ public class CameraCtrl : MonoBehaviour
         nowFocusPos = Vector3.SmoothDamp(Camera.main.transform.position, nowFocusPos, ref Vec, SmoothDamp);
         LoopBGUpdate();
         CameraUpdate();
+        GroundUpdate();
         
         void LoopBGUpdate()
         {
-            M.SetFloat("_XOffset", nowFocusPos.x);
-            M.SetFloat("_YOffset", nowFocusPos.y);
+            SkyM.SetFloat("_XOffset", nowFocusPos.x);
+            SkyM.SetFloat("_YOffset", nowFocusPos.y);
         }
 
         void CameraUpdate()
@@ -42,6 +46,14 @@ public class CameraCtrl : MonoBehaviour
             var targetPos = nowFocusPos;
             targetPos.z = Camera.main.transform.position.z;
             Camera.main.transform.position = targetPos;
+        }
+
+        void GroundUpdate()
+        {
+            var pos = Ground.transform.position;
+            pos.x = nowFocusPos.x;
+            Ground.transform.position = pos;
+            GroundM.SetFloat("_XOffset", nowFocusPos.x);
         }
     }
 }
