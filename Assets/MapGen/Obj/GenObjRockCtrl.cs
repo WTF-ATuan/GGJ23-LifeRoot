@@ -23,7 +23,7 @@ public class GenObjRockCtrl : GenObjBaseCtrl
         var space = new Vector3(GenDistance , GenDistance , 0);
         var chuncks = Define.InAreaChunk(pos - space, pos + space);
         foreach (var chunck in chuncks) {
-            if (data.ContainsKey(chunck)) return false;
+            if (data.ContainsKey(chunck) && data[chunck]==Type) return false;
         }
         if(Random.value>GenChance)return false;
         return true;
