@@ -162,6 +162,7 @@ MonoBehaviour:
   playerCollider: {fileID: 7805452664046548415}
   girlController: {fileID: 5007736765798488406}
   canControl: 1
+  finishGameEvent: {fileID: 11400000, guid: 58dadcb1f25b64a6e8b682c705d37295, type: 2}
   addForceDotValueThreshold: 0.3
   forceFactor: 600
   speedLimit: 30
@@ -175,10 +176,11 @@ MonoBehaviour:
   minDrag: 0.5
   dieSpeed: 10
   deadShowTime: 2
-  rootExtendFactor: 20
+  rootExtendFactor: 40
   speed: 0
   playerTransform: {fileID: 0}
   velocity: 0
+  playerY: 0
   touchFloor: 0
 --- !u!1 &833623664767129035
 GameObject:
@@ -420,6 +422,7 @@ MonoBehaviour:
   playerCollider: {fileID: 0}
   girlController: {fileID: 0}
   canControl: 0
+  finishGameEvent: {fileID: 0}
   addForceDotValueThreshold: 0.5
   forceFactor: 6
   speedLimit: 20
@@ -437,6 +440,7 @@ MonoBehaviour:
   speed: 0
   playerTransform: {fileID: 0}
   velocity: 0
+  playerY: 0
   touchFloor: 0
 --- !u!50 &833623663536727178
 Rigidbody2D:

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public Collider2D playerCollider;
     public Girl girlController;
     public bool canControl = false;
-
+    public VoidEvent finishGameEvent;
     
 
 
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Transform playerTransform;
     public float velocity;
+    public float playerY;
 
     // Internal
     Vector3 lastPosition;
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        finishGameEvent.Register(OnVictory);
 
     }
     
@@ -314,6 +316,11 @@ public class PlayerController : MonoBehaviour
     public void SetCanControl(bool value)
     {
         canControl = value;
+    }
+
+    void OnVictory()
+    {
+        Debug.Log("Win!");
     }
 }
 
