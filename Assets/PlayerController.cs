@@ -61,8 +61,9 @@ public class PlayerController : MonoBehaviour
     bool dead = false;
     DateTime dieAt;
     bool deadEventFired = false;
-    AudioSource audioSource;
-    
+    public AudioSource audioSource;
+    public AudioSource winAudioSource;
+
 
 
 
@@ -338,7 +339,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Win!");
         judgeWinLoss = false;
-        audioSource.PlayOneShot(victoryAudioClip, 1);
 
     }
 }
