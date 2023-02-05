@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public AttachDetectorController attachDetectorController;
     public float rootLength;
     public Collider2D playerCollider;
+    public Girl girlController;
     
 
     // Config
@@ -24,13 +25,16 @@ public class PlayerController : MonoBehaviour
     public float forceFactor = 0.5f;
     public float speedLimit = 10f;
     public float leaveForceFactor = 10f;
-    public float rootNatureLegnthForce = 10f;
+    public float rootNatureLengthForce = 10f;
     public float rootNatureLength = 7f;
     public float maxRootLength = 10f;
     public float jumpForceFactor = 10f;
     public Vector3 floorJumpDirection = new Vector3(0, 1, 0);
     public float jumpFloorCooldown = 1f;
     public float minDrag = 0.5f;
+    public float dieSpeed = 25f;
+    public float deadShowTime = 1f;
+    public float rootExtendFactor = 8f;
 
     // Reader
     public float speed;
@@ -46,6 +50,9 @@ public class PlayerController : MonoBehaviour
     public bool touchFloor = false;
     bool prevTouchFloor = false;
     DateTime lastJump;
+    bool dead = false;
+    DateTime dieAt;
+    bool deadEventFired = false;
 
     public GameObject _currentTarget { private set; get; }
     private GameObject currentTarget
@@ -104,17 +111,16 @@ public class PlayerController : MonoBehaviour
 
         if (ObjBaseCtrl.HookingObj != null)
         {
-            Debug.Log(ObjBaseCtrl.HookingObj.GetType());
             if (rootJoint.distance > maxRootLength)
             {
                 rootJoint.autoConfigureDistance = false;
                 rootJoint.distance = maxRootLength;
 
             }
-            else if (rootJoint.distance < 5)
+            else if (rootJoint.distance < rootNatureLength)
             {
                 rootJoint.autoConfigureDistance = false;
-                rootJoint.distance += 4f * Time.fixedDeltaTime;
+                rootJoint.distance += rootExtendFactor * Time.fixedDeltaTime;
 
             }
             else
@@ -140,7 +146,7 @@ public class PlayerController : MonoBehaviour
         rootLength = direction.magnitude;
         if (rootLength > rootNatureLength)
         {
-            Vector3 force = playerTransform.up * (rootLength - rootNatureLength) / rootNatureLength * rootNatureLegnthForce;
+            Vector3 force = playerTransform.up * (rootLength - rootNatureLength) / rootNatureLength * rootNatureLengthForce;
             playerRigidbody.AddForceAtPosition(force, playerTransform.position, ForceMode2D.Force);
         }
     }
@@ -148,7 +154,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         DrawRoot();
-        UpdateControl();
+        if (dead)
+        {
+            UpdateDead();
+        }
+        else
+        {
+            UpdateControl();
+        }
+        
     }
 
     void DrawRoot()
@@ -238,7 +252,32 @@ public class PlayerController : MonoBehaviour
 
     void OnTouchFloor()
     {
-        Debug.Log("Hit floor!");
+        
+        if(speed > dieSpeed)
+        {
+            OnDie();
+        }
+    }
+
+    void OnDie()
+    {
+        dead = true;
+        Debug.Log("Die!");
+        girlController.BreakBody(Girl.BodyPart.All);
+        playerCollider.enabled = false;
+        Destroy(attachDetectorController.gameObject);
+       
+        dieAt = DateTime.Now;
+    }
+    void UpdateDead()
+    {
+        if(!deadEventFired && ((DateTime.Now - dieAt).TotalSeconds > deadShowTime))
+        {
+            EventAggregator.Publish(new OnPlayerDead());
+            deadEventFired = true;
+            
+        }
+        
     }
 
     void JumpFromFloor()
