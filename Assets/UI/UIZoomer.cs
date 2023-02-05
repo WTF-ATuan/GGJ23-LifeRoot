@@ -16,6 +16,7 @@ public class UIZoomer : MonoBehaviour
     public bool Height;
     public bool Weight;
     public float Duration = 0.2f;
+    public float Delay = 0.2f;
 
     private Image Image;
     private Color BaseColor;
@@ -86,19 +87,19 @@ public class UIZoomer : MonoBehaviour
         if (Scale)
         {
             transform.localScale = Vector3.one * 0.8f;
-            mySequence.Insert(0, transform.DOScale(Vector3.one, Duration).SetEase(Ease.OutBack));
+            mySequence.Insert(Delay, transform.DOScale(Vector3.one, Duration).SetEase(Ease.OutBack));
         }
-        if (Alpha) mySequence.Insert(0, GetComponent<Image>().DOColor(BaseColor, Duration));
-        if (Canvas) mySequence.Insert(0, DOTween.To(() => Canvass.alpha, x => Canvass.alpha = x, 1, Duration));
+        if (Alpha) mySequence.Insert(Delay, GetComponent<Image>().DOColor(BaseColor, Duration));
+        if (Canvas) mySequence.Insert(Delay, DOTween.To(() => Canvass.alpha, x => Canvass.alpha = x, 1, Duration));
         if (Height)
         {
             Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
-            mySequence.Insert(0, DOTween.To(() => Rect.rect.height, x => Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x), HeightSave, Duration));
+            mySequence.Insert(Delay, DOTween.To(() => Rect.rect.height, x => Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x), HeightSave, Duration));
         }
         if (Weight)
         {
             Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0);
-            mySequence.Insert(0, DOTween.To(() => Rect.rect.width, x => Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x), WeightSave, Duration));
+            mySequence.Insert(Delay, DOTween.To(() => Rect.rect.width, x => Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x), WeightSave, Duration));
         }
 
         foreach (var item in Others)

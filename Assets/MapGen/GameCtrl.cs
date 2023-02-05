@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class GameCtrl : MonoBehaviour
     
     public UnityEvent OnReStart;
     public UnityEvent OnFirstOpen;
+    public UnityEvent OnPlayerDead;
     private void Awake()
     {
         if (PlayerPrefs.GetInt(KEY_RESTART) == 1) {
@@ -19,6 +21,10 @@ public class GameCtrl : MonoBehaviour
         } else {
             OnFirstOpen?.Invoke();
         }
+        EventAggregator.OnEvent<OnPlayerDead>().Subscribe(e =>
+        {
+            OnPlayerDead.Invoke();
+        });
     }
 
     public void B_OnPause()
@@ -43,3 +49,5 @@ public class GameCtrl : MonoBehaviour
         Application.LoadLevel(0);
     }
 }
+
+public class OnPlayerDead { }
