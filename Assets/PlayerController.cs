@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
         UpdateRoot();
     }
 
-    void OnRootDetach()
+    public void OnRootDetach()
     {
         rootJoint.enabled = false;
         rootJoint.connectedBody = null;
