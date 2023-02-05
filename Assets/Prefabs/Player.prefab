@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e6ed0602d690346a319a90e5d6839a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTarget: {fileID: 0}
   rootRenderer: {fileID: 833623664767129036}
   possibleTarget: {fileID: 0}
   playerRigidbody: {fileID: 2226131639853706841}
@@ -163,16 +162,17 @@ MonoBehaviour:
   playerCollider: {fileID: 7805452664046548415}
   addForceDotValueThreshold: 0.3
   forceFactor: 400
-  speedLimit: 30
+  speedLimit: 50
   leaveForceFactor: 20
   rootNatureLegnthForce: 300
-  rootNatureLength: 10
-  maxRootLength: 10
+  rootNatureLength: 5
+  maxRootLength: 5
   jumpForceFactor: 500
   floorJumpDirection: {x: 0, y: 1, z: 0}
   jumpFloorCooldown: 1
   speed: 0
   playerTransform: {fileID: 0}
+  velocity: 0
   touchFloor: 0
 --- !u!1 &833623664767129035
 GameObject:
@@ -405,7 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e6ed0602d690346a319a90e5d6839a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTarget: {fileID: 0}
   rootRenderer: {fileID: 833623664767129036}
   possibleTarget: {fileID: 0}
   playerRigidbody: {fileID: 833623663536727178}
@@ -414,9 +413,9 @@ MonoBehaviour:
   rootLength: 0
   playerCollider: {fileID: 0}
   addForceDotValueThreshold: 0.5
-  forceFactor: 600
+  forceFactor: 6
   speedLimit: 20
-  leaveForceFactor: 300
+  leaveForceFactor: 3
   rootNatureLegnthForce: 300
   rootNatureLength: 2
   maxRootLength: 10
@@ -425,6 +424,7 @@ MonoBehaviour:
   jumpFloorCooldown: 1
   speed: 0
   playerTransform: {fileID: 0}
+  velocity: 0
   touchFloor: 0
 --- !u!50 &833623663536727178
 Rigidbody2D:
@@ -539,8 +539,8 @@ Transform:
   m_GameObject: {fileID: 1389241571817445151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -7.08, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 777346582967155}
   m_Father: {fileID: 833623664175491887}
@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601081750484041998, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_LinearDrag
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6601081750484041998, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_AngularDrag
