@@ -49,8 +49,8 @@ public class BreakRockCtrl : ObjBaseCtrl
             EventAggregator.Publish(new BreakRoot(gameObject));
             OnBreak.Invoke();
             await Task.Delay(500);
-            MapGenCtrl.Instance.RecycleChunk(MyChunk);
             Recycle();
+            MapGenCtrl.Instance.ChangeChunkType(MyChunk, ObjType.Null);
         }
     }
 }
