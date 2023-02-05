@@ -24,7 +24,6 @@ public class EnemyDetector : MonoBehaviour
 
 
     public AudioSource audioSource;
-    public AudioClip hitClip;
 
     private Sequence scaleSequence;
     bool detectEnabled = true;
@@ -34,7 +33,6 @@ public class EnemyDetector : MonoBehaviour
     void Start()
     {
         currentScale = maxScale;
-        audioSource = GetComponent<AudioSource>();
 
         detectCollider = GetComponent<Collider2D>();
 
@@ -90,7 +88,7 @@ public class EnemyDetector : MonoBehaviour
         }, 0, maxScale, rootRecoverTime).SetEase(Ease.InCirc));
         playerController.OnRootDetach();
         if(audioSource != null) {
-            audioSource.PlayOneShot(hitClip, 0.4f);
+            audioSource.Play();
         }
         
         Debug.Log("Hit enemy");
@@ -98,7 +96,10 @@ public class EnemyDetector : MonoBehaviour
 
     void OnWin()
     {
-        audioSource.Stop();
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
         detectEnabled = false;
     }
 }
