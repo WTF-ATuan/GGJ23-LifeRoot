@@ -793,6 +793,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Girl
       objectReference: {fileID: 0}
+    - target: {fileID: 5502651670848253235, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 813229ae4c8c73246a2fca2a47171f2e, type: 3}
+    - target: {fileID: 5502651670848253235, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 6347314115985094548}
     - target: {fileID: 6601081750484041998, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_Mass
       value: 10
@@ -822,6 +830,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600557981878315599, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958089388322431700, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -2007,18 +2019,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd96db8a9950e45539fcaac58bb98be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5687674971345532483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 833623663691995412, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+--- !u!114 &5687674971345532511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 833623663691995400, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
   m_PrefabInstance: {fileID: 5007736765400133463}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &571607589
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e9be0593b64eb488144ca56b20ada2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5784037868250064670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1529545767812155465, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
+  m_PrefabInstance: {fileID: 5007736765400133463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1319930162
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687674971345532483}
+  m_GameObject: {fileID: 5784037868250064670}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -2108,17 +2131,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5687674971345532511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 833623663691995400, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
-  m_PrefabInstance: {fileID: 5007736765400133463}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687674971345532483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e9be0593b64eb488144ca56b20ada2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &7805452664046548415 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 2967177098030504680, guid: 1ac072f735b6447bf991c5693e00563c, type: 3}
