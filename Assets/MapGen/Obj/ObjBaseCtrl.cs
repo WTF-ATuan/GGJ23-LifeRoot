@@ -18,9 +18,10 @@ public class ObjBaseCtrl : MonoBehaviour
         MyChunk = Define.Pos2Chunk(transform.position);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EventHook();
+        
         void EventHook()
         {
             EventHooks.Add(            
