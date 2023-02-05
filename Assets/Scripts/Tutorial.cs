@@ -18,6 +18,14 @@ public class Tutorial : MonoBehaviour {
 
     #region Behaviour
 
+    private void OnEnable() {
+        image.gameObject.SetActive(true);
+    }
+
+    private void OnDisable() {
+        image.gameObject.SetActive(false);
+    }
+
     private void Update() {
         if (Input.GetMouseButtonDown(1))
             --spriteIndex;
@@ -26,7 +34,6 @@ public class Tutorial : MonoBehaviour {
 
         if (spriteIndex >= sprites.Length) {
             finishToturialEvent.Raise();
-            image.gameObject.SetActive(false);
             enabled = false;
             return;
         }

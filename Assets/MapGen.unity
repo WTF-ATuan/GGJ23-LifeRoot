@@ -154,11 +154,6 @@ Transform:
   m_Father: {fileID: 1355280298}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &537601585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7718253978148152682, guid: bd606e32499994ec19a37d453e516370, type: 3}
-  m_PrefabInstance: {fileID: 2105576195}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &809750669
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,10 +735,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 537601585}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 2105576197}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: d5ea8aa3ff5b947e4a138537db6bf90f, type: 2}
+        m_TargetAssemblyTypeName: Game.GameEvent.VoidEvent, IdleGame.GameEvent
+        m_MethodName: Raise
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -758,6 +765,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2105576198}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2105576197}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1375,6 +1394,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3510921517358647904, guid: bd606e32499994ec19a37d453e516370, type: 3}
   m_PrefabInstance: {fileID: 2105576195}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2105576197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7851354619386493236, guid: bd606e32499994ec19a37d453e516370, type: 3}
+  m_PrefabInstance: {fileID: 2105576195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37f0c7528cd54750a496fd71a148f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105576198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3510921518044134237, guid: bd606e32499994ec19a37d453e516370, type: 3}
