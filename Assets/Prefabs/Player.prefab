@@ -161,8 +161,9 @@ MonoBehaviour:
   rootLength: 0
   playerCollider: {fileID: 7805452664046548415}
   girlController: {fileID: 5007736765798488406}
+  canControl: 1
   addForceDotValueThreshold: 0.3
-  forceFactor: 400
+  forceFactor: 600
   speedLimit: 30
   leaveForceFactor: 20
   rootNatureLengthForce: 10
@@ -172,9 +173,9 @@ MonoBehaviour:
   floorJumpDirection: {x: 0, y: 1, z: 0}
   jumpFloorCooldown: 1
   minDrag: 0.5
-  dieSpeed: 20
+  dieSpeed: 10
   deadShowTime: 2
-  rootExtendFactor: 8
+  rootExtendFactor: 20
   speed: 0
   playerTransform: {fileID: 0}
   velocity: 0
@@ -418,6 +419,7 @@ MonoBehaviour:
   rootLength: 0
   playerCollider: {fileID: 0}
   girlController: {fileID: 0}
+  canControl: 0
   addForceDotValueThreshold: 0.5
   forceFactor: 6
   speedLimit: 20
