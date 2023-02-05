@@ -18,4 +18,4 @@ MonoBehaviour:
   GenDis_Others: 20
   GenChance: 0.1
   MinCanGenY: 60
-  MaxCanGenY: 9999
+  MaxCanGenY: 200
