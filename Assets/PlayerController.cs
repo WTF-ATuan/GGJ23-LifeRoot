@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
     public Girl girlController;
     public bool canControl = false;
     public VoidEvent finishGameEvent;
-    
+    public VoidEvent startGameEvent;
+    public AudioClip dieAudioClip;
+    public AudioClip victoryAudioClip;
+    public bool judgeWinLoss = false;
+
 
 
     // Config
@@ -57,6 +61,10 @@ public class PlayerController : MonoBehaviour
     bool dead = false;
     DateTime dieAt;
     bool deadEventFired = false;
+    AudioSource audioSource;
+    
+
+
 
     public GameObject _currentTarget { private set; get; }
     private GameObject currentTarget
@@ -72,13 +80,15 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        finishGameEvent.Register(OnVictory);
 
     }
     
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerTransform = playerRigidbody.gameObject.transform;
+        finishGameEvent.Register(OnVictory);
+        startGameEvent.Register(OnStart);
         lastPosition = playerTransform.position;
         fixedDirection = playerTransform.right;
         currentTarget = null;
@@ -247,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateFloor()
     {
+        if (!judgeWinLoss) return;
         touchFloor = playerCollider.OverlapCollider(floorFilter, floorCollidedResults) > 0;
         if(!prevTouchFloor && touchFloor)
         {
@@ -267,13 +278,14 @@ public class PlayerController : MonoBehaviour
     void OnDie()
     {
         OnRootDetach();
+        judgeWinLoss = false;
         dead = true;
         canControl = false;
         Debug.Log("Die!");
         girlController.BreakBody(Girl.BodyPart.All);
         playerCollider.enabled = false;
         Destroy(attachDetectorController.gameObject.transform.parent.gameObject);
-       
+        audioSource.PlayOneShot(dieAudioClip, 1);
         dieAt = DateTime.Now;
     }
     void UpdateDead()
@@ -318,9 +330,21 @@ public class PlayerController : MonoBehaviour
         canControl = value;
     }
 
+    void OnStart()
+    {
+        Debug.Log("Start!");
+        SetCanControl(true);
+        judgeWinLoss = true;
+
+
+    }
+
     void OnVictory()
     {
         Debug.Log("Win!");
+        judgeWinLoss = false;
+        audioSource.PlayOneShot(victoryAudioClip, 1);
+
     }
 }
 
