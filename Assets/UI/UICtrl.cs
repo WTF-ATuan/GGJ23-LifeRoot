@@ -20,7 +20,7 @@ public class UICtrl : MonoBehaviour {
     }
 
     void TimerUpdate(float time) {
-        timeText.text = string.Format("%.2d:%.2d", (int)time / 60, (int)time % 60);
+        timeText.text = string.Format("{0:D2}:{1:D2}", (int)time / 60, (int)time % 60);
     }
 
     void UpdateDistance(int distance) {
