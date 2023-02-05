@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour {
     #region Varibles
 
     [SerializeField]
-    private IntEvent scoreEvent;
+    private IntEvent distanceEvent;
     [SerializeField]
     private FloatEvent timeEvent;
     [SerializeField]
@@ -23,14 +23,20 @@ public class GameController : MonoBehaviour {
 
     #region Private Function
 
-    private void UpdateScoreAndTime() {
+    private void UpdateTime() {
         gameTime += Time.deltaTime;
 
-        var score = (int)player.transform.position.y;
-
-        scoreEvent.Raise(score);
         timeEvent.Raise(gameTime);
         timeFormatEvent.Raise(string.Format("%dm%ds", gameTime / 60, gameTime % 60));
+    }
+
+    private void UpdateDistance() {
+        if (endingFlag == null)
+            return;
+
+        var distance = (int)(endingFlag.transform.position.y -  player.transform.position.y);
+
+        distanceEvent.Raise(distance);
     }
 
     private void CheckEnding() {
@@ -65,7 +71,8 @@ public class GameController : MonoBehaviour {
         if (isFinish)
             return;
 
-        UpdateScoreAndTime();
+        UpdateTime();
+        UpdateDistance();
         CheckEnding();
     }
 

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a2fd70472c8941e3b8a1e2e55c2c3e1, type: 3}
-  m_Name: ScoreEvent
+  m_Name: DistanceEvent
   m_EditorClassIdentifier: 
   arg: 0

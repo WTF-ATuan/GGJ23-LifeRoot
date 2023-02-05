@@ -1,43 +1,37 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Game.GameEvent;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
-public class UICtrl : MonoBehaviour
-{
+public class UICtrl : MonoBehaviour {
 
-    public StringEvent TimerEvent;
-    public IntEvent ScoreEvent;
-    
-    public TMP_Text Timer;
-    public TMP_Text Score;
+    public FloatEvent timeEvent;
+    public IntEvent distanceEvent;
 
-    private float StartTime;
-    
-    
-    private void Start()
-    {
-        StartTime = Time.time;
-        TimerEvent?.Register(TimerUpdate);
-        ScoreEvent?.Register(ScoreUpdate);
+    public TMP_Text timeText;
+    public TMP_Text distanceText;
+
+
+    private void Start() {
+        if( timeEvent )
+            timeEvent.Register(TimerUpdate);
+
+        if( distanceEvent )
+            distanceEvent.Register(UpdateDistance);
     }
 
-    void TimerUpdate(string e)
-    {
-        Timer.text = e;
-    }
-    
-    void ScoreUpdate(int e)
-    {
-        Score.text = $"Score: {e}";
+    void TimerUpdate(float time) {
+        timeText.text = string.Format("%.2d:%.2d", (int)time / 60, (int)time % 60);
     }
 
-    private void OnDestroy()
-    {
-        TimerEvent?.Unregister(TimerUpdate);
-        ScoreEvent?.Unregister(ScoreUpdate);
+    void UpdateDistance(int distance) {
+        distanceText.text = $"Ending Distance: {distance}";
+    }
+
+    private void OnDestroy() {
+        if( timeEvent )
+            timeEvent.Unregister(TimerUpdate);
+
+        if( distanceEvent )
+            distanceEvent.Unregister(UpdateDistance);
     }
 }
