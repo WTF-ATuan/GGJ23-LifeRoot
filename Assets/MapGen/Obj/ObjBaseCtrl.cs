@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class ObjBaseCtrl : MonoBehaviour
 {
-
+    public UnityEvent OnHookOn;
+    
     protected bool IsHooking;
     private List<IDisposable> EventHooks;
     public Vector2Int MyChunk { private set; get; }
@@ -54,7 +56,7 @@ public class ObjBaseCtrl : MonoBehaviour
 
     public virtual void HookOn()
     {
-        Debug.Log("HookOn!");
+        OnHookOn.Invoke();
     }
     
     public virtual void HookOff()

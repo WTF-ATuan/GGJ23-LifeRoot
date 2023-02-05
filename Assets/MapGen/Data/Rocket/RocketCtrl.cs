@@ -12,7 +12,6 @@ public class RocketCtrl : ObjBaseCtrl
     public float FlySec = 5;
     
     public UnityEvent Reset;
-    public UnityEvent FlyBegin;
     public UnityEvent FlyEnd;
 
     
@@ -36,7 +35,7 @@ public class RocketCtrl : ObjBaseCtrl
         {
             FlyEnd.Invoke();
         });
-        FlyBegin.Invoke();
+        OnHookOn.Invoke();
         IsFly = true;
     }
 }
