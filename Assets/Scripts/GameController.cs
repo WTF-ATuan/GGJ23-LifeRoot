@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
     private IntEvent scoreEvent;
     [SerializeField]
     private FloatEvent timeEvent;
+    [SerializeField]
+    private StringEvent timeFormatEvent;
 
     private GameObject player;
     private float gameTime = 0;
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour {
 
         scoreEvent.Raise(score);
         timeEvent.Raise(gameTime);
+        timeFormatEvent.Raise(string.Format("%dm%ds", gameTime / 60, gameTime % 60));
     }
 
     #endregion
