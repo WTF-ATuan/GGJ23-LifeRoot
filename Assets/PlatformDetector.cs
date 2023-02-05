@@ -20,10 +20,15 @@ public class PlatformDetector : MonoBehaviour
     bool detectEnabled = true;
 
 
+    public AudioSource audioSource;
+    public AudioClip hitClip;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         detectCollider = GetComponent<Collider2D>();
 
         collideFilter = new ContactFilter2D();
@@ -63,6 +68,7 @@ public class PlatformDetector : MonoBehaviour
         lastHit = DateTime.Now;
         //playerController.OnRootDetach();
         Debug.Log("Hit platform");
+        audioSource.PlayOneShot(hitClip, 0.4f);
     }
 
     void OnWin()
