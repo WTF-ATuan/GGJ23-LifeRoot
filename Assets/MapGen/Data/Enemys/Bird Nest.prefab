@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bird: {fileID: 5047356227565144810}
-  maxShowTime: 6
+  maxShowTime: 4
   minShowTime: 2
   cooldownTime: {fileID: 5047356226657134229}
 --- !u!114 &5047356226657134229
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c83838ea796b40119d8d3b93bc760fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdTime: 2
+  cdTime: 4
   timeEvent:
     m_PersistentCalls:
       m_Calls:
