@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.GameEvent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class UICtrl : MonoBehaviour
 {
+
+    public StringEvent TimerEvent;
+    public IntEvent ScoreEvent;
+    
     public TMP_Text Timer;
-    public TMP_Text High;
     public TMP_Text Score;
 
     private float StartTime;
@@ -17,11 +21,23 @@ public class UICtrl : MonoBehaviour
     private void Start()
     {
         StartTime = Time.time;
-        
+        TimerEvent?.Register(TimerUpdate);
+        ScoreEvent?.Register(ScoreUpdate);
     }
 
-    private void Update()
+    void TimerUpdate(string e)
     {
-        Timer.text = $"{ Time.time - StartTime}";
+        Timer.text = e;
+    }
+    
+    void ScoreUpdate(int e)
+    {
+        Score.text = $"Score: {e}";
+    }
+
+    private void OnDestroy()
+    {
+        TimerEvent?.Unregister(TimerUpdate);
+        ScoreEvent?.Unregister(ScoreUpdate);
     }
 }
