@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8623d5c2eed27541b67494b135663ae, type: 3}
   m_Name: DashBird
   m_EditorClassIdentifier: 
-  Type: 4
+  Type: 1
   Prefeb: {fileID: 6274688496730358808, guid: c2369caa990df4d53bfeab5a97af0373, type: 3}
-  GenDistance: 7
-  GenChance: 0.5
+  GenDistance: 0
+  GenChance: 0.3
   MinCanGenY: 1
   MaxCanGenY: 9999

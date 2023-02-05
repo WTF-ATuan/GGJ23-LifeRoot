@@ -261,6 +261,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDie()
     {
+        OnRootDetach();
         dead = true;
         Debug.Log("Die!");
         girlController.BreakBody(Girl.BodyPart.All);
