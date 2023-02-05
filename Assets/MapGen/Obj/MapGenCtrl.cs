@@ -113,12 +113,14 @@ public class MapGenCtrl : MonoBehaviour
             PoolObj<ObjBaseCtrl> obj = null;
             bool haveData = Data.ContainsKey(chunk);
             if (!haveData) {
+                ObjType t = ObjType.Null; 
                 foreach (var factory in ObjFactories) {
                     if (factory.Value.CheckCanGen(Data, chunk, out obj)) {
-                        Data.Add(chunk, factory.Key);
+                        t = factory.Key;
                         break;
                     }
                 }
+                Data.Add(chunk, t);
             } else {
                 if (ObjFactories.ContainsKey(Data[chunk])) {
                     obj = ObjFactories[Data[chunk]].ForceGen(chunk);

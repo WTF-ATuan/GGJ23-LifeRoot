@@ -17,6 +17,7 @@ public class UICtrl : MonoBehaviour
     private void Start()
     {
         StartTime = Time.time;
+        
     }
 
     private void Update()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 3
   Prefeb: {fileID: 6590322282203154894, guid: 76b341ba7e3f04f4d8fb863716127948, type: 3}
-  GenDistance: 7
-  GenChance: 0.3
+  GenDistance: 1
+  GenChance: 1
   MinCanGenY: 1
   MaxCanGenY: 9999
