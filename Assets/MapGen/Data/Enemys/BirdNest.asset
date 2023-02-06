@@ -16,6 +16,6 @@ MonoBehaviour:
   Prefeb: {fileID: 5047356226657134230, guid: 4138c8a6b193443d0abb70c2596809fd, type: 3}
   GenDis_SameType: 40
   GenDis_Others: 10
-  GenChance: 0.05
+  GenChance: 0.1
   MinCanGenY: 100
   MaxCanGenY: 9999

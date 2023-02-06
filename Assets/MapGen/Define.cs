@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class Define
 {
-    public const float ChunkSize = 2;
-    public const float GenRange = 5;
+    public const float ChunkSize = 4;
+    public const float GenRange = 2;
 
     public static Vector2Int Pos2Chunk(Vector3 pos)
     {
