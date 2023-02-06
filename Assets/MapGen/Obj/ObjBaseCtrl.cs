@@ -12,6 +12,7 @@ public class ObjBaseCtrl : MonoBehaviour
     public static ObjBaseCtrl HookingObj { private set; get; }
 
     public UnityEvent OnHookOn;
+    public UnityEvent OnHookOff;
     
     protected bool IsHooking;
     private List<IDisposable> EventHooks;
@@ -74,6 +75,7 @@ public class ObjBaseCtrl : MonoBehaviour
     public virtual void HookOff()
     {
         HookingObj = null;
+        OnHookOff.Invoke();
     }
 
     public ObjType GetType()

@@ -13,7 +13,7 @@ public class GameCtrl : MonoBehaviour
     public UnityEvent OnReStart;
     public UnityEvent OnFirstOpen;
     public UnityEvent OnPlayerDead;
-    private void Awake()
+    private void Start()
     {
         if (PlayerPrefs.GetInt(KEY_RESTART) == 1) {
             OnReStart?.Invoke();
