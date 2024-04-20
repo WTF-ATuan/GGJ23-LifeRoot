@@ -24,6 +24,7 @@ public class GameCtrl : MonoBehaviour
         EventAggregator.OnEvent<OnPlayerDead>().Subscribe(e =>
         {
             OnPlayerDead.Invoke();
+            PokiUnitySDK.Instance.gameplayStop();
         });
     }
 
@@ -45,8 +46,12 @@ public class GameCtrl : MonoBehaviour
 
     public void B_Restart()
     {
-        PlayerPrefs.SetInt(KEY_RESTART, 1);
-        Application.LoadLevel(0);
+        PokiUnitySDK.Instance.commercialBreakCallBack += () => {
+            PlayerPrefs.SetInt(KEY_RESTART, 1);
+            Application.LoadLevel(0);
+            PokiUnitySDK.Instance.gameplayStart();
+        };
+        PokiUnitySDK.Instance.commercialBreak();
     }
 }
 
